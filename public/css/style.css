@@ -1,0 +1,47 @@
+@charset "UTF-8";
+header {
+    background-color: green;
+    color: white;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+header h1 {
+    font-size: 35px;
+}
+
+.main-contents {
+    height: 92vh;
+    background-color: whitesmoke;
+}
+
+.sidebar {
+    width: 20%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: 18px;
+}
+
+.budget-box {
+    background-color: rgb(255, 208, 208);
+    padding: 10px 5px;
+    border-radius: 10px;
+}
+
+.budget-box p {
+    text-align: center;
+    font-size: 23px;
+}
+
+.text-sm {
+    font-size: 10px;
+}
+
+.main-contents-row {
+    height: 100%;
+}
