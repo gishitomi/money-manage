@@ -31,8 +31,9 @@
     flex-direction: column;
 }
 
-.create-box a {
+.create-box span {
     margin: 30px 0;
+    cursor: pointer;
 }
 
 .btn-circle-flat {
@@ -118,7 +119,7 @@
 }
 
 .drawer-menu {
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .drawer-menu li {
@@ -127,8 +128,13 @@
 
 .back-btn {
     position: absolute;
-    /* right: 0; */
-    /* top: 10%; */
+    color: gray;
+    right: 5%;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    color: rgb(100, 100, 100);
 }
 
 .spend-color {
@@ -159,4 +165,23 @@
 .detail-wrapper {
     width: 60%;
     margin-right: 20px;
+}
+
+
+/* ドロワーメニュー */
+
+.spend-type-box {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.spend-type-box button {
+    width: 70px;
+    height: 65px;
+    margin: 10px;
+}
+
+.spend-type-box p {
+    margin: 0;
 }

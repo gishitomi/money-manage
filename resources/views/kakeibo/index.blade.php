@@ -25,25 +25,68 @@
         <canvas id="mycanvas"></canvas>
     </div>
     <div class="create-box">
-        <a href="#" class="btn-circle-flat spend-color" id="spend-btn">支出</a>
-        <a href="#" id="incom-btn" class="btn-circle-flat">収入</a>
+        <span class="btn-circle-flat spend-color" id="spend-btn">支出</span>
+        <span id="incom-btn" class="btn-circle-flat">収入</span>
     </div>
     <!-- ドロワーメニュー -->
     <div id="spend-drawer">
-        <h2 class="drawer-title">支出</h2>
-        <a href="#" class="back-btn">
-        <i class="fas fa-times fa-2x"></i>
-        </a>
-        <ul class="drawer-menu">
-            <li>メニュー</li>
-        </ul>
+        <form action="{{route('kakeibo.index')}}" method="POST">
+            @csrf
+            <h2 class="drawer-title">支出</h2>
+            <span class="back-btn" id="spend-back">
+                <i class="fas fa-times fa-3x"></i>
+            </span>
+            <div class="drawer-menu">
+                <h3>支出金額を入力</h3>
+                <p><input type="text" name="money" id="money">円</p>
+                <div class="memo-box">
+                    <textarea name="description" id="description" cols="40" rows="5"></textarea>
+                </div>
+                <div class="spend-type-box">
+                    <button><i class="fas fa-utensils"></i>
+                        <p>食費</p>
+                    </button>
+                    <button><i class="fas fa-home"></i>
+                        <p>家賃</p>
+                    </button>
+                    <button><i class="far fa-lightbulb"></i>
+                        <p>光熱費</p>
+                    </button>
+                    <button><i class="fas fa-car"></i>
+                        <p>交通費</p>
+                    </button>
+                    <button><i class="fas fa-wifi"></i>
+                        <p>通信費</p>
+                    </button>
+                    <button><i class="fas fa-handshake"></i>
+                        <p>交際費</p>
+                    </button>
+                    <button><i class="fas fa-star"></i>
+                        <p>趣味</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-yen-sign"></i>
+                        <p>貯蓄</p>
+                    </button>
+                    <button>
+                        <i class="fas fa-comment-dots"></i>
+                        <p>その他</p>
+                    </button>
+                </div>
+                <div class="submit-btn">
+                    <button type="submit" class="btn btn-danger">決定</button>
+                </div>
+            </div>
+        </form>
     </div>
 
     <div id="incom-drawer">
         <h2 class="drawer-title incom">収入</h2>
-        <ul class="drawer-menu">
-            <li>メニュー</li>
-        </ul>
+        <span class="back-btn" id="incom-back">
+            <i class="fas fa-times fa-3x"></i>
+        </span>
+        <div class="drawer-menu">
+        </div>
     </div>
 
 
