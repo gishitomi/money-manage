@@ -10,8 +10,9 @@ class KakeiboController extends Controller
     public function index() {
         return view('kakeibo.index');
     }
-    public function create() {
-        
+    public function create(Request $request) {
+        $kakeibos = new Kakeibo();
+
     }
 
 

@@ -37,56 +37,88 @@
                 <i class="fas fa-times fa-3x"></i>
             </span>
             <div class="drawer-menu">
+                <div class="date-box">
+                    <p id="spend-date" name="date"></p>
+                </div>
                 <h3>支出金額を入力</h3>
-                <p><input type="text" name="money" id="money">円</p>
+                <p><input type="number" name="money" id="money">　円</p>
                 <div class="memo-box">
                     <textarea name="description" id="description" cols="40" rows="5"></textarea>
                 </div>
                 <div class="spend-type-box">
-                    <button><i class="fas fa-utensils"></i>
-                        <p>食費</p>
-                    </button>
-                    <button><i class="fas fa-home"></i>
-                        <p>家賃</p>
-                    </button>
-                    <button><i class="far fa-lightbulb"></i>
-                        <p>光熱費</p>
-                    </button>
-                    <button><i class="fas fa-car"></i>
-                        <p>交通費</p>
-                    </button>
-                    <button><i class="fas fa-wifi"></i>
-                        <p>通信費</p>
-                    </button>
-                    <button><i class="fas fa-handshake"></i>
-                        <p>交際費</p>
-                    </button>
-                    <button><i class="fas fa-star"></i>
-                        <p>趣味</p>
-                    </button>
-                    <button>
-                        <i class="fas fa-yen-sign"></i>
-                        <p>貯蓄</p>
-                    </button>
-                    <button>
-                        <i class="fas fa-comment-dots"></i>
-                        <p>その他</p>
-                    </button>
+                    <input id="type-1" class="radio-inline__input" type="radio" name="type" value="type-1" />
+                    <label class="radio-inline__label" for="type-1">
+                        <i class="fas fa-utensils fa-lg"></i><br>
+                        食費
+                    </label>
+                    <input id="type-2" class="radio-inline__input" type="radio" name="type" value="type-2" />
+                    <label class="radio-inline__label" for="type-2">
+                        <i class="far fa-lightbulb fa-lg"></i><br>
+                        光熱費
+                    </label>
+                    <input id="type-3" class="radio-inline__input" type="radio" name="type" value="type-3" />
+                    <label class="radio-inline__label" for="type-3">
+                        <i class="fas fa-home fa-lg"></i><br>
+                        家賃
+                    </label>
+                    <input id="type-4" class="radio-inline__input" type="radio" name="type" value="type-4" />
+                    <label class="radio-inline__label" for="type-4">
+                        <i class="fas fa-car fa-lg"></i><br>
+                        交通費
+                    </label>
+                    <input id="type-5" class="radio-inline__input" type="radio" name="type" value="type-5" />
+                    <label class="radio-inline__label" for="type-5">
+                        <i class="fas fa-wifi fa-lg"></i><br>
+                        通信費
+                    </label>
+                    <input id="type-6" class="radio-inline__input" type="radio" name="type" value="type-6" />
+                    <label class="radio-inline__label" for="type-6">
+                        <i class="fas fa-handshake fa-lg"></i><br>
+                        交際費
+                    </label>
+                    <input id="type-7" class="radio-inline__input" type="radio" name="type" value="type-7" />
+                    <label class="radio-inline__label" for="type-7">
+                        <i class="fas fa-star fa-lg"></i><br>
+                        趣味
+                    </label>
+                    <input id="type-8" class="radio-inline__input" type="radio" name="type" value="type-8" />
+                    <label class="radio-inline__label" for="type-8">
+                        <i class="fas fa-yen-sign fa-lg"></i><br>
+                        貯蓄
+                    </label>
+                    <input id="type-9" class="radio-inline__input" type="radio" name="type" value="type-9" />
+                    <label class="radio-inline__label" for="type-9">
+                        <i class="fas fa-comment-dots fa-lg"></i><br>
+                        その他
+                    </label>
+
                 </div>
+                <input type="hidden" name="money-type" value="1">
                 <div class="submit-btn">
-                    <button type="submit" class="btn btn-danger">決定</button>
+                    <button type="submit" class="btn btn-danger btn-block">決定</button>
                 </div>
             </div>
         </form>
     </div>
 
     <div id="incom-drawer">
-        <h2 class="drawer-title incom">収入</h2>
-        <span class="back-btn" id="incom-back">
-            <i class="fas fa-times fa-3x"></i>
-        </span>
-        <div class="drawer-menu">
-        </div>
+        <form action="{{route('kakeibo.index')}}" method="POST">
+            <h2 class="drawer-title incom">収入</h2>
+            <span class="back-btn" id="incom-back">
+                <i class="fas fa-times fa-3x"></i>
+            </span>
+            <div class="drawer-menu">
+                <h3>収入金額を入力</h3>
+                <p><input type="number" name="money" id="incom-money">　円</p>
+                <div class="memo-box">
+                    <textarea name="description" id="incom-description" cols="40" rows="5"></textarea>
+                </div>
+
+                <div class="submit-btn">
+                    <button type="submit" class="btn btn-success btn-block">決定</button>
+                </div>
+            </div>
+        </form>
     </div>
 
 
