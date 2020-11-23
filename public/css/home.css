@@ -173,16 +173,11 @@ form {
 
 /* ドロワーメニュー */
 
-.spend-type-box {
-    width: 50%;
+.spend-type-box,
+.incom-type-box {
+    width: 67%;
     display: flex;
     flex-wrap: wrap;
-}
-
-.spend-type-box button {
-    width: 70px;
-    height: 65px;
-    margin: 10px;
 }
 
 .spend-type-box p {
@@ -224,4 +219,27 @@ form {
     outline-offset: -2px;
     outline-style: auto;
     outline-width: 5px;
+}
+
+.incom_radio-inline__input:checked+.radio-inline__label {
+    background: #4ab54a;
+    color: #fff;
+    text-shadow: 0 0 1px rgba(0, 0, 0, .7);
+}
+
+.incom_radio-inline__input:focus+.radio-inline__label {
+    outline-color: #4ab54a;
+    outline-offset: -2px;
+    outline-style: auto;
+    outline-width: 5px;
+}
+
+.date-box {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.date-box span {
+    cursor: pointer;
 }

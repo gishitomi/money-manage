@@ -11,8 +11,15 @@ class KakeiboController extends Controller
         return view('kakeibo.index');
     }
     public function create(Request $request) {
-        $kakeibos = new Kakeibo();
+        $kakeibo = new Kakeibo();
+        $kakeibo->type = $request->type;
+        $kakeibo->date = $request->date;
+        $kakeibo->money = $request->money;
+        $kakeibo->money_type = $request->money_type;
+        $kakeibo->description = $request->description;
+        $kakeibo->save();
 
+        return redirect(route('kakeibo.index'));
     }
 
 
