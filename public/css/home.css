@@ -2,7 +2,7 @@
     position: relative;
 }
 
-.home-index {
+#home-index {
     margin: 20px 0;
 }
 
@@ -192,6 +192,11 @@ form {
 /* チェックボックス */
 
 .radio-inline__input {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+}
+
+.incom_radio-inline__input {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute !important;
 }

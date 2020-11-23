@@ -5,19 +5,19 @@
 @section('content')
 <div class="container home">
 
-    <h1 class="home-index">2020年11月の利用状況</h1>
+    <h1 id="home-index"></h1>
     <div class="date-arrow">
         <div class="arrow-left">
-            <a href="">
+            <span id="left-month-btn">
                 <i class="fas fa-arrow-left fa-2x"></i>
-            </a>
-            <p>10月</p>
+            </span>
+            <p id="left-month"></p>
         </div>
         <div class="arrow-right">
-            <a href="">
+            <span id="right-month-btn">
                 <i class="fas fa-arrow-right fa-2x"></i>
-            </a>
-            <p>12月</p>
+            </span>
+            <p id="right-month"></p>
         </div>
     </div>
     <div class="graph">
