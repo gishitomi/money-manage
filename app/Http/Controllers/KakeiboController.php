@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Kakeibo;
+use App\Models\Budget;
 
 class KakeiboController extends Controller
 {
     public function index() {
-        return view('kakeibo.index');
+        $budget = Budget::whereMonth('date', 11)->first();
+        return view('kakeibo.index', [
+            'budget' => $budget,
+        ]);
     }
     public function create(Request $request) {
         $kakeibo = new Kakeibo();

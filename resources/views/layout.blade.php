@@ -26,8 +26,8 @@
         <div class="row main-contents-row">
             <div class="sidebar col-md-2 d-md-flex d-none ">
                 <div class="budget-box">
-                    <p class="text-sm">11月の設定予算</p>
-                    <p>60000円</p>
+                    <p class="text-sm" id="budget-month"></p>
+                    <p>{{$budget->money}}円</p>
                 </div>
                 <div class="remaining">
                     <p>残り<br><span>円</span><br>使用できます。</p>
@@ -37,6 +37,14 @@
                     <p>〇〇円</p>
                     <p>前月との差</p>
                     <p>〇〇円</p>
+                </div>
+                <div class="budget-edit-btn">
+                    <!-- <a href="">
+                    <button class="btn btn-primary btn-block">予算を編集</button>
+                    </a> -->
+                    <a href="">
+                    <button class="btn btn-block btn-success">予算を設定する</button>
+                    </a>
                 </div>
             </div>
             <div class="col-md-10 col-12">

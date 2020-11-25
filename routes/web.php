@@ -23,3 +23,5 @@ Route::post('/kakeibo', 'App\Http\Controllers\KakeiboController@create');
 
 // 一覧画面
 Route::get('/kakeibo/details', 'App\Http\Controllers\KakeiboController@showDetails')->name('kakeibo.details');
+
+// 予算編集、設定画面

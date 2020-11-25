@@ -8,15 +8,15 @@
     <h1 id="home-index"></h1>
     <div class="date-arrow">
         <div class="arrow-left">
-            <span id="left-month-btn">
+            <a href="#" id="left-month-btn">
                 <i class="fas fa-arrow-left fa-2x"></i>
-            </span>
+            </a>
             <p id="left-month"></p>
         </div>
         <div class="arrow-right">
-            <span id="right-month-btn">
+            <a href="#" id="right-month-btn">
                 <i class="fas fa-arrow-right fa-2x"></i>
-            </span>
+            </a>
             <p id="right-month"></p>
         </div>
     </div>
