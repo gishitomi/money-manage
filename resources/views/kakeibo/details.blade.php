@@ -5,5 +5,4 @@
 
 @section('content')
 <h1>詳細一覧</h1>
-
 @endsection

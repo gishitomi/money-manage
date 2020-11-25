@@ -5,19 +5,19 @@
 @section('content')
 <div class="container home">
 
-    <h1 id="home-index"></h1>
+    <h1 id="home-index">{{date('Y年m月', strtotime($budget->date))}}の利用状況</h1>
     <div class="date-arrow">
         <div class="arrow-left">
-            <a href="#" id="left-month-btn">
-                <i class="fas fa-arrow-left fa-2x"></i>
-            </a>
-            <p id="left-month"></p>
+                <a href="#" id="left-month-btn">
+                    <i class="fas fa-arrow-left fa-2x"></i>
+                </a>
+                <p id="left-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date)), 0, 0))}}月</p>
         </div>
         <div class="arrow-right">
             <a href="#" id="right-month-btn">
                 <i class="fas fa-arrow-right fa-2x"></i>
             </a>
-            <p id="right-month"></p>
+            <p id="right-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date))+2, 0, 0))}}月</p>
         </div>
     </div>
     <div class="graph">
@@ -92,17 +92,17 @@
                     </label>
                     <input id="type-9" class="radio-inline__input" type="radio" name="type" value="9" />
                     <label class="radio-inline__label" for="type-9">
-                    <i class="fas fa-tshirt fa-lg"></i><br>
+                        <i class="fas fa-tshirt fa-lg"></i><br>
                         被服費
                     </label>
                     <input id="type-10" class="radio-inline__input" type="radio" name="type" value="10" />
                     <label class="radio-inline__label" for="type-10">
-                    <i class="fas fa-cut fa-lg"></i><br>
+                        <i class="fas fa-cut fa-lg"></i><br>
                         美容費
                     </label>
                     <input id="type-11" class="radio-inline__input" type="radio" name="type" value="11" />
                     <label class="radio-inline__label" for="type-11">
-                    <i class="fas fa-hospital-alt fa-lg"></i><br>
+                        <i class="fas fa-hospital-alt fa-lg"></i><br>
                         医療費
                     </label>
                     <input id="type-12" class="radio-inline__input" type="radio" name="type" value="12" />
@@ -143,12 +143,12 @@
                 <div class="incom-type-box">
                     <input id="type-101" class="incom_radio-inline__input" type="radio" name="type" value="101" />
                     <label class="radio-inline__label" for="type-101">
-                    <i class="fas fa-yen-sign fa-lg"></i><br>
+                        <i class="fas fa-yen-sign fa-lg"></i><br>
                         給与
                     </label>
                     <input id="type-102" class="incom_radio-inline__input" type="radio" name="type" value="102" />
                     <label class="radio-inline__label" for="type-102">
-                    <i class="fas fa-piggy-bank fa-lg"></i><br>
+                        <i class="fas fa-piggy-bank fa-lg"></i><br>
                         その他
                     </label>
                 </div>

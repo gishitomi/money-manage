@@ -14,11 +14,11 @@ class BudgetsTableSeeder extends Seeder
      */
     public function run()
     {
-        $data = [50000, 10000, 60000];
+        $data = ['01', '02', '03', '04'];
         foreach($data as $item) {
             DB::table('budgets')->insert([
-                'date' => '2020/11/24',
-                'money' => $item,
+                'date' => '2020/' . $item . '/01',
+                'money' => 20000,
             ]);
         }
     }

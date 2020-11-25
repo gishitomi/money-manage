@@ -34,74 +34,74 @@ incomBack.addEventListener('click', function() {
 })
 
 // インデックス画面の日付を取得
-window.addEventListener('load', function() {
-    // インデックス画面の日付を取得
-    var homeIndex = document.getElementById('home-index');
-    var leftMonth = document.getElementById('left-month');
-    var rightMonth = document.getElementById('right-month');
-    var leftMonthBtn = document.getElementById('left-month-btn');
-    var rightMonthBtn = document.getElementById('right-month-btn');
-    // 予算画面の日付取得
-    var budgetMonth = document.getElementById('budget-month');
+// window.addEventListener('load', function() {
+//     // インデックス画面の日付を取得
+//     var homeIndex = document.getElementById('home-index');
+//     var leftMonth = document.getElementById('left-month');
+//     var rightMonth = document.getElementById('right-month');
+//     var leftMonthBtn = document.getElementById('left-month-btn');
+//     var rightMonthBtn = document.getElementById('right-month-btn');
+//     // 予算画面の日付取得
+//     var budgetMonth = document.getElementById('budget-month');
 
-    var today = new Date();
-    var year = today.getFullYear();
-    var month = today.getMonth() + 1;
-    var date = today.getDate();
-    var weekDay = ['日', '月', '火', '水', '木', '金', '土'];
-    var day = weekDay[today.getDay()];
-    homeIndex.textContent = year + '年' + month + '月の利用状況';
-    leftMonth.textContent = month - 1 + '月';
-    rightMonth.textContent = month + 1 + '月';
-    budgetMonth.textContent = month + '月の設定予算';
+//     var today = new Date();
+//     var year = today.getFullYear();
+//     var month = today.getMonth() + 1;
+//     var date = today.getDate();
+//     var weekDay = ['日', '月', '火', '水', '木', '金', '土'];
+//     var day = weekDay[today.getDay()];
+//     homeIndex.textContent = year + '年' + month + '月の利用状況';
+//     leftMonth.textContent = month - 1 + '月';
+//     rightMonth.textContent = month + 1 + '月';
+//     budgetMonth.textContent = month + '月の設定予算';
 
-    // 前月ボタンクリックイベント
-    leftMonthBtn.addEventListener('click', function() {
-            today.setMonth(today.getMonth() - 1);
-            year = today.getFullYear();
-            month = today.getMonth() + 1;
-            var lastMonth = month - 1;
-            var nextMonth = month + 1;
-            // 0が表示されてしまうので、lastMonthが0の場合12を表示させる
-            if (lastMonth > 0) {
-                leftMonth.textContent = lastMonth + '月';
-            } else {
-                leftMonth.textContent = 12 + '月';
-            }
-            // 次の月の表示を変更こっちも13が表示されてしまうので、代わりに1を表示させる
-            if (nextMonth < 13) {
-                rightMonth.textContent = nextMonth + '月';
-            } else {
-                rightMonth.textContent = 1 + '月';
-            }
-            // インデックス部分の表示を変更
-            homeIndex.textContent = year + '年' + month + '月の利用状況';
-            budgetMonth.textContent = month + '月の設定予算';
-        })
-        // 来月ボタンクリックイベント
-    rightMonthBtn.addEventListener('click', function() {
-        today.setMonth(today.getMonth() + 1);
-        year = today.getFullYear();
-        month = today.getMonth() + 1;
-        var lastMonth = month - 1;
-        var nextMonth = month + 1;
-        // 0が表示されてしまうので、lastMonthが0の場合12を表示させる
-        if (lastMonth > 0) {
-            leftMonth.textContent = lastMonth + '月';
-        } else {
-            leftMonth.textContent = 12 + '月';
-        }
-        // 次の月の表示を変更こっちも13が表示されてしまうので、代わりに1を表示させる
-        if (nextMonth < 13) {
-            rightMonth.textContent = nextMonth + '月';
-        } else {
-            rightMonth.textContent = 1 + '月';
-        }
-        // インデックス部分の表示を変更
-        homeIndex.textContent = year + '年' + month + '月の利用状況';
-        budgetMonth.textContent = month + '月の設定予算';
-    })
-})
+//     // 前月ボタンクリックイベント
+//     leftMonthBtn.addEventListener('click', function() {
+//             today.setMonth(today.getMonth() - 1);
+//             year = today.getFullYear();
+//             month = today.getMonth() + 1;
+//             var lastMonth = month - 1;
+//             var nextMonth = month + 1;
+//             // 0が表示されてしまうので、lastMonthが0の場合12を表示させる
+//             if (lastMonth > 0) {
+//                 leftMonth.textContent = lastMonth + '月';
+//             } else {
+//                 leftMonth.textContent = 12 + '月';
+//             }
+//             // 次の月の表示を変更こっちも13が表示されてしまうので、代わりに1を表示させる
+//             if (nextMonth < 13) {
+//                 rightMonth.textContent = nextMonth + '月';
+//             } else {
+//                 rightMonth.textContent = 1 + '月';
+//             }
+//             // インデックス部分の表示を変更
+//             homeIndex.textContent = year + '年' + month + '月の利用状況';
+//             budgetMonth.textContent = month + '月の設定予算';
+//         })
+//         // 来月ボタンクリックイベント
+//     rightMonthBtn.addEventListener('click', function() {
+//         today.setMonth(today.getMonth() + 1);
+//         year = today.getFullYear();
+//         month = today.getMonth() + 1;
+//         var lastMonth = month - 1;
+//         var nextMonth = month + 1;
+//         // 0が表示されてしまうので、lastMonthが0の場合12を表示させる
+//         if (lastMonth > 0) {
+//             leftMonth.textContent = lastMonth + '月';
+//         } else {
+//             leftMonth.textContent = 12 + '月';
+//         }
+//         // 次の月の表示を変更こっちも13が表示されてしまうので、代わりに1を表示させる
+//         if (nextMonth < 13) {
+//             rightMonth.textContent = nextMonth + '月';
+//         } else {
+//             rightMonth.textContent = 1 + '月';
+//         }
+//         // インデックス部分の表示を変更
+//         homeIndex.textContent = year + '年' + month + '月の利用状況';
+//         budgetMonth.textContent = month + '月の設定予算';
+//     })
+// })
 
 
 // 支出、収入画面の日付を取得
