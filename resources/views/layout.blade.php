@@ -26,7 +26,7 @@
         <div class="row main-contents-row">
             <div class="sidebar col-md-2 d-md-flex d-none ">
                 <div class="budget-box">
-                    <p class="text-sm" id="budget-month"></p>
+                    <p class="text-sm" id="budget-month">{{date('m月', strtotime($date))}}の設定予算</p>
                     <p>{{$budget->money}}円</p>
                 </div>
                 <div class="remaining">

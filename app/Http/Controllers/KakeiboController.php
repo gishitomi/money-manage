@@ -11,9 +11,16 @@ class KakeiboController extends Controller
 {
     public function index(string $date) {
         $budget = Budget::whereDate('date', $date)->first();
+        $past = date('Y-m-d', mktime(0, 0, 0, date('m', strtotime($date)) - 1, date(01), date('Y', strtotime($date))));
+        $future = date('Y-m-d', mktime(0, 0, 0, date('m', strtotime($date)) + 1, date(01), date('Y', strtotime($date))));
+        $firstDate = date('Y-m-01', strtotime($date));
+        $lastDate = date('Y-m-t', strtotime($date));
+        $totalSpendDate = Kakeibo::whereBetween('date', [$firstDate, $lastDate]);
         return view('kakeibo.index', [
             'budget' => $budget,
-            'date' => $date
+            'date' => $date,
+            'past' => $past,
+            'future' => $future,
         ]);
     }
     public function create(Request $request) {

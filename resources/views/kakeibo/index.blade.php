@@ -8,13 +8,13 @@
     <h1 id="home-index">{{date('Y年m月', strtotime($budget->date))}}の利用状況</h1>
     <div class="date-arrow">
         <div class="arrow-left">
-                <a href="#" id="left-month-btn">
+                <a href="{{route('kakeibo.index', ['date' => $past])}}" id="left-month-btn">
                     <i class="fas fa-arrow-left fa-2x"></i>
                 </a>
                 <p id="left-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date)), 0, 0))}}月</p>
         </div>
         <div class="arrow-right">
-            <a href="#" id="right-month-btn">
+            <a href="{{route('kakeibo.index', ['date' => $future])}}" id="right-month-btn">
                 <i class="fas fa-arrow-right fa-2x"></i>
             </a>
             <p id="right-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date))+2, 0, 0))}}月</p>
