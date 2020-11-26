@@ -15,15 +15,34 @@ class KakeiboController extends Controller
         $future = date('Y-m-d', mktime(0, 0, 0, date('m', strtotime($date)) + 1, date(01), date('Y', strtotime($date))));
         $firstDate = date('Y-m-01', strtotime($date));
         $lastDate = date('Y-m-t', strtotime($date));
+
+        // 支出金額のしぼりこみ
         $totalSpendDate = Kakeibo::whereBetween('date', [$firstDate, $lastDate]);
+        $totalSpendDate = Kakeibo::where('money_type', 1);
+        // 取得した支出金額の合計を算出
+        $totalSpend = $totalSpendDate->sum('money');
+
+        // 収入金額のしぼりこみ
+        $totalIncomDate = Kakeibo::whereBetween('date', [$firstDate, $lastDate]);
+        $totalIncomDate = Kakeibo::where('money_type', 2);
+        // 取得した収入金額の合計を算出
+        $totalIncom = $totalIncomDate->sum('money');
+
+        $allTotalIncomDate = Kakeibo::where('money_type', 2);
+        $allTotallIncom = $allTotalIncomDate->sum('money');
+
         return view('kakeibo.index', [
             'budget' => $budget,
             'date' => $date,
             'past' => $past,
             'future' => $future,
-        ]);
+            'totalSpend' => $totalSpend,
+            'totalIncom' => $totalIncom,
+            'allTotalIncom' => $allTotallIncom,
+        ]); 
     }
-    public function create(Request $request) {
+    public function create(string $date, Request $request) {
+        $budget = Budget::whereDate('date', $date)->first();
         $kakeibo = new Kakeibo();
         $kakeibo->type = $request->type;
         $kakeibo->date = $request->date;
@@ -32,7 +51,7 @@ class KakeiboController extends Controller
         $kakeibo->description = $request->description;
         $kakeibo->save();
 
-        return redirect(route('kakeibo.index'));
+        return redirect(route('kakeibo.index', ['date' => $budget->date]));
     }
 
     // public function() showNext()

@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 // インデックス画面
 Route::get('/kakeibo/{date?}', 'App\Http\Controllers\KakeiboController@index')->name('kakeibo.index');
-Route::post('/kakeibo', 'App\Http\Controllers\KakeiboController@create');
+Route::post('/kakeibo/{date?}', 'App\Http\Controllers\KakeiboController@create');
 
 // 一覧画面
 Route::get('/kakeibo/details', 'App\Http\Controllers\KakeiboController@showDetails')->name('kakeibo.details');

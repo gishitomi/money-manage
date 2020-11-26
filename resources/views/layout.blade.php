@@ -30,11 +30,11 @@
                     <p>{{$budget->money}}円</p>
                 </div>
                 <div class="remaining">
-                    <p>残り<br><span>円</span><br>使用できます。</p>
+                    <p>残り<br><span style="font-weight: 900;">{{$budget->money - $totalSpend}}</span>円<br>使用できます。</p>
                 </div>
                 <div class="total-money">
                     <p>累計金額</p>
-                    <p>〇〇円</p>
+                    <p><span>{{$allTotalIncom}}</span>円</p>
                     <p>前月との差</p>
                     <p>〇〇円</p>
                 </div>

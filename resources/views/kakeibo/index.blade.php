@@ -30,7 +30,7 @@
     </div>
     <!-- ドロワーメニュー -->
     <div id="spend-drawer">
-        <form action="{{route('kakeibo.index')}}" method="POST">
+        <form action="{{route('kakeibo.index', ['date' => $budget->date])}}" method="POST">
             @csrf
             <h2 class="drawer-title">支出</h2>
             <span class="back-btn" id="spend-back">
@@ -121,7 +121,7 @@
     </div>
 
     <div id="incom-drawer">
-        <form action="{{route('kakeibo.index')}}" method="POST">
+        <form action="{{route('kakeibo.index', ['date' => $budget->date])}}" method="POST">
             @csrf
             <h2 class="drawer-title incom">収入</h2>
             <span class="back-btn" id="incom-back">
@@ -163,8 +163,8 @@
 
 
     <div class="incom-box">
-        <p>収入:　<span></span></p>
-        <p>支出:　<span></span></p>
+        <p>収入:　<span>{{$totalIncom}}</span>円</p>
+        <p>支出:　<span>{{$totalSpend}}</span>円</p>
     </div>
 
 
