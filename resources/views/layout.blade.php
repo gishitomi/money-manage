@@ -25,6 +25,7 @@
     <div class="main-contents container-fluid">
         <div class="row main-contents-row">
             <div class="sidebar col-md-2 d-md-flex d-none ">
+                @if(isset($budget))
                 <div class="budget-box">
                     <p class="text-sm" id="budget-month">{{date('m月', strtotime($date))}}の設定予算</p>
                     <p>{{$budget->money}}円</p>
@@ -32,6 +33,9 @@
                 <div class="remaining">
                     <p>残り<br><span style="font-weight: 900;">{{$budget->money - $totalSpend}}</span>円<br>使用できます。</p>
                 </div>
+                @else
+                <p>存在しないよ</p>
+                @endif
                 <div class="total-money">
                     <p>累計金額</p>
                     <p><span>{{$allTotalIncom}}</span>円</p>
@@ -39,13 +43,17 @@
                     <p>〇〇円</p>
                 </div>
                 <div class="budget-edit-btn">
-                    <!-- <a href="">
-                    <button class="btn btn-primary btn-block">予算を編集</button>
-                    </a> -->
+                    @if($budget)
                     <a href="{{route('budgets.edit')}}">
-                    <button class="btn btn-block btn-success">予算を設定する</button>
+                    <button class="btn btn-primary btn-block">予算を編集</button>
                     </a>
+                    @else
+                    <a href="{{route('budgets.edit')}}">
+                        <button class="btn btn-block btn-success">予算を設定する</button>
+                    </a>
+                    @endif
                 </div>
+
             </div>
             <div class="col-md-10 col-12">
                 @yield('content')

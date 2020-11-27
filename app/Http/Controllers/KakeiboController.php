@@ -17,14 +17,16 @@ class KakeiboController extends Controller
         $lastDate = date('Y-m-t', strtotime($date));
 
         // 支出金額のしぼりこみ
-        $totalSpendDate = Kakeibo::whereBetween('date', [$firstDate, $lastDate]);
-        $totalSpendDate = Kakeibo::where('money_type', 1);
+        $totalSpendDate = Kakeibo::query();
+        $totalSpendDate->whereBetween('date', [$firstDate, $lastDate]);
+        $totalSpendDate->where('money_type', 1);
         // 取得した支出金額の合計を算出
         $totalSpend = $totalSpendDate->sum('money');
 
         // 収入金額のしぼりこみ
-        $totalIncomDate = Kakeibo::whereBetween('date', [$firstDate, $lastDate]);
-        $totalIncomDate = Kakeibo::where('money_type', 2);
+        $totalIncomDate = Kakeibo::query();
+        $totalIncomDate->whereBetween('date', [$firstDate, $lastDate]);
+        $totalIncomDate->where('money_type', 2);
         // 取得した収入金額の合計を算出
         $totalIncom = $totalIncomDate->sum('money');
 

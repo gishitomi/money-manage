@@ -4,14 +4,17 @@
 @endsection
 @section('content')
 <div class="container home">
-
-    <h1 id="home-index">{{date('Y年m月', strtotime($budget->date))}}の利用状況</h1>
+    @if(isset($budget))
+    <h1 class="home-index">{{date('Y年m月', strtotime($budget->date))}}の利用状況</h1>
+    @else
+    <h1 class="home-index">{{date('Y年m月', strtotime($date))}}の利用状況</h1>
+    @endif
     <div class="date-arrow">
         <div class="arrow-left">
-                <a href="{{route('kakeibo.index', ['date' => $past])}}" id="left-month-btn">
-                    <i class="fas fa-arrow-left fa-2x"></i>
-                </a>
-                <p id="left-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date)), 0, 0))}}月</p>
+            <a href="{{route('kakeibo.index', ['date' => $past])}}" id="left-month-btn">
+                <i class="fas fa-arrow-left fa-2x"></i>
+            </a>
+            <p id="left-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date)), 0, 0))}}月</p>
         </div>
         <div class="arrow-right">
             <a href="{{route('kakeibo.index', ['date' => $future])}}" id="right-month-btn">
@@ -20,6 +23,7 @@
             <p id="right-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date))+2, 0, 0))}}月</p>
         </div>
     </div>
+    @if($budget)
     <div class="graph">
         <!--描画領域 -->
         <canvas id="mycanvas"></canvas>
@@ -178,6 +182,17 @@
             <i class="fas fa-chart-line fa-lg"></i>
         </button>
     </div>
+    @else
+    <div class="kakeibo-img">
+        <div class="not-exist-msg">
+            <p>データは存在しません。<br>支出予算額から入力してください。</p>
+            <a href="{{route('budgets.edit')}}">
+                <button class="btn btn-block btn-success">予算を設定する</button>
+            </a>
+
+        </div>
+    </div>
+    @endif
 </div>
 
 
