@@ -249,12 +249,38 @@ form {
     cursor: pointer;
 }
 
+
+/* 画面のぼかし */
+
 .kakeibo-img {
     width: 100%;
     height: 590px;
     background-image: url(../img/kakeibo-img.png);
     background-size: cover;
     position: relative;
-    -ms-filter: blur(6px);
-    filter: blur(6px);
+    z-index: 0;
+    overflow: hidden;
+}
+
+.kakeibo-img:before {
+    content: '';
+    background: inherit;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+}
+
+.not-exist-msg {
+    width: 70%;
+    height: 300px;
+    background-color: white;
+    margin: 100px auto;
 }
