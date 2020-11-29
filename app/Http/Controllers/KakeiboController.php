@@ -33,6 +33,10 @@ class KakeiboController extends Controller
         $allTotalIncomDate = Kakeibo::where('money_type', 2);
         $allTotallIncom = $allTotalIncomDate->sum('money');
 
+        // グラフへの引き渡し
+        // $keys = ['家賃', '交際費', '食費'];
+        // $counts = [10, 4, 21];
+
         return view('kakeibo.index', [
             'budget' => $budget,
             'date' => $date,

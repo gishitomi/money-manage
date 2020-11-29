@@ -24,9 +24,10 @@
         </div>
     </div>
     @if($budget)
-    <div class="graph">
+    <div class="graph" id="app">
         <!--描画領域 -->
-        <canvas id="mycanvas"></canvas>
+        <canvas id="chart"></canvas>
+        @{{$data}}
     </div>
     <div class="create-box">
         <span class="btn-circle-flat spend-color" id="spend-btn">支出</span>
@@ -167,8 +168,8 @@
 
 
     <div class="incom-box">
-        <p>収入:　<span>{{$totalIncom}}</span>円</p>
-        <p>支出:　<span>{{$totalSpend}}</span>円</p>
+        <p>今月の収入:　<span>{{$totalIncom}}</span>円</p>
+        <p>今月の支出:　<span>{{$totalSpend}}</span>円</p>
     </div>
 
 
@@ -186,10 +187,11 @@
     <div class="kakeibo-img">
         <div class="not-exist-msg">
             <p>データは存在しません。<br>支出予算額から入力してください。</p>
-            <a href="{{route('budgets.edit')}}">
-                <button class="btn btn-block btn-success">予算を設定する</button>
-            </a>
-
+            <div class="not-exist-btn">
+                <a href="{{route('budgets.edit')}}">
+                    <button class="btn btn-block btn-success">予算を設定する</button>
+                </a>
+            </div>
         </div>
     </div>
     @endif
@@ -199,7 +201,92 @@
 @endsection
 
 @section('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-<script src="{{asset('js/chart.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+<!-- <script src="{{asset('js/chart.js')}}"></script> -->
 <script src="{{asset('js/drawer.js')}}"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            kakeibos: [],
+            date: '{{date("Y-m", strtotime($date))}}',
+            chart: null
+        },
+        methods: {
+            getKakeibos() {
+
+                // 👇 販売実績データを取得
+                fetch('/ajax/kakeibo?date=' + this.date)
+                    .then(response => response.json())
+                    .then(data => {
+
+                        if (this.chart) { // チャートが存在していれば初期化
+                            this.chart.destroy();
+                        }
+                        // 👇 lodashでデータを加工
+                        const groupedTypes = _.groupBy(data, 'type'); // タイプごとにグループ化
+                        const moneys = _.map(groupedTypes, typeKakeibo => {
+                            return _.sumBy(companySales, 'amount'); // 金額合計
+
+                        });
+                        const typeNames = _.keys(groupedTypes); // タイプ名
+
+                        // 👇 円グラフを描画
+                        const ctx = document.getElementById('chart').getContext('2d');
+                        this.chart = new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                datasets: [{
+                                    data: moneys,
+                                    backgroundColor: [
+                                        'rgb(255, 99, 132)',
+                                        'rgb(255, 159, 64)',
+                                        'rgb(255, 205, 86)',
+                                        'rgb(75, 192, 192)',
+                                        'rgb(54, 162, 235)',
+                                        'rgb(153, 102, 255)',
+                                        'rgb(201, 203, 207)',
+                                        'rgb(150, 150, 255)',
+                                        'rgb(100, 100, 255)',
+                                        'rgb(10, 10, 255)',
+                                        'rgb(15, 0, 25)',
+                                        'rgb(255, 255, 255)',
+                                    ]
+                                }],
+                                labels: typeNames,
+                            },
+                            options: {
+                                title: {
+                                    display: true,
+                                    fontSize: 45,
+                                    text: '支出別統計'
+                                },
+                                // tooltips: {
+                                //     callbacks: {
+                                //         label(tooltipItem, data) {
+
+                                //             const datasetIndex = tooltipItem.datasetIndex;
+                                //             const index = tooltipItem.index;
+                                //             const amount = data.datasets[datasetIndex].data[index];
+                                //             const amountText = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                                //             const company = data.labels[index];
+                                //             return ' ' + company + ' ' + amountText + ' 円';
+
+                                //         }
+                                //     }
+                                // }
+                            }
+                        });
+
+                    });
+
+            }
+        },
+        mounted() {
+            this.getKakeibos();
+        }
+    });
+</script>
 @endsection

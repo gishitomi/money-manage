@@ -13,6 +13,11 @@
     justify-content: space-between;
 }
 
+#left-month,
+#right-month {
+    font-size: 18px;
+}
+
 .graph {
     width: 100%;
     margin: 0 auto;
@@ -280,7 +285,21 @@ form {
 
 .not-exist-msg {
     width: 70%;
-    height: 300px;
+    height: 250px;
     background-color: white;
     margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.not-exist-msg p {
+    text-align: center;
+    font-size: 20px;
+}
+
+.not-exist-btn {
+    width: 60%;
+    height: 50px;
 }
