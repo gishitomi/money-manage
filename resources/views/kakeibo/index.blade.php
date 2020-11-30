@@ -24,10 +24,9 @@
         </div>
     </div>
     @if($budget)
-    <div class="graph" id="app">
+    <div class="graph">
         <!--描画領域 -->
-        <canvas id="chart"></canvas>
-        @{{$data}}
+        <canvas id="mycanvas"></canvas>
     </div>
     <div class="create-box">
         <span class="btn-circle-flat spend-color" id="spend-btn">支出</span>
@@ -43,9 +42,11 @@
             </span>
             <div class="drawer-menu">
                 <div class="date-box">
+                    <span id="spend-month-left"><i class="fas fa-long-arrow-alt-left fa-lg"></i></span>
                     <span id="spend-date-left"><i class="fas fa-long-arrow-alt-left fa-lg"></i></span>
                     <p id="spend-date"></p>
                     <span id="spend-date-right"><i class="fas fa-long-arrow-alt-right fa-lg"></i></span>
+                    <span id="spend-month-right"><i class="fas fa-long-arrow-alt-right fa-lg"></i></span>
                 </div>
                 <input type="hidden" id="db-spend-date" name="date">
                 <input type="hidden" name="money_type" value="1">
@@ -115,7 +116,6 @@
                         <i class="fas fa-comment-dots fa-lg"></i><br>
                         その他
                     </label>
-
                 </div>
                 <input type="hidden" name="money-type" value="1">
                 <div class="submit-btn">
@@ -124,7 +124,6 @@
             </div>
         </form>
     </div>
-
     <div id="incom-drawer">
         <form action="{{route('kakeibo.index', ['date' => $budget->date])}}" method="POST">
             @csrf
@@ -157,7 +156,6 @@
                         その他
                     </label>
                 </div>
-
                 <div class="submit-btn">
                     <button type="submit" class="btn btn-success btn-block">決定</button>
                 </div>
@@ -204,89 +202,6 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-<!-- <script src="{{asset('js/chart.js')}}"></script> -->
+<script src="{{asset('js/chart.js')}}"></script>
 <script src="{{asset('js/drawer.js')}}"></script>
-<script>
-    new Vue({
-        el: '#app',
-        data: {
-            kakeibos: [],
-            date: '{{date("Y-m", strtotime($date))}}',
-            chart: null
-        },
-        methods: {
-            getKakeibos() {
-
-                // 👇 販売実績データを取得
-                fetch('/ajax/kakeibo?date=' + this.date)
-                    .then(response => response.json())
-                    .then(data => {
-
-                        if (this.chart) { // チャートが存在していれば初期化
-                            this.chart.destroy();
-                        }
-                        // 👇 lodashでデータを加工
-                        const groupedTypes = _.groupBy(data, 'type'); // タイプごとにグループ化
-                        const moneys = _.map(groupedTypes, typeKakeibo => {
-                            return _.sumBy(companySales, 'amount'); // 金額合計
-
-                        });
-                        const typeNames = _.keys(groupedTypes); // タイプ名
-
-                        // 👇 円グラフを描画
-                        const ctx = document.getElementById('chart').getContext('2d');
-                        this.chart = new Chart(ctx, {
-                            type: 'pie',
-                            data: {
-                                datasets: [{
-                                    data: moneys,
-                                    backgroundColor: [
-                                        'rgb(255, 99, 132)',
-                                        'rgb(255, 159, 64)',
-                                        'rgb(255, 205, 86)',
-                                        'rgb(75, 192, 192)',
-                                        'rgb(54, 162, 235)',
-                                        'rgb(153, 102, 255)',
-                                        'rgb(201, 203, 207)',
-                                        'rgb(150, 150, 255)',
-                                        'rgb(100, 100, 255)',
-                                        'rgb(10, 10, 255)',
-                                        'rgb(15, 0, 25)',
-                                        'rgb(255, 255, 255)',
-                                    ]
-                                }],
-                                labels: typeNames,
-                            },
-                            options: {
-                                title: {
-                                    display: true,
-                                    fontSize: 45,
-                                    text: '支出別統計'
-                                },
-                                // tooltips: {
-                                //     callbacks: {
-                                //         label(tooltipItem, data) {
-
-                                //             const datasetIndex = tooltipItem.datasetIndex;
-                                //             const index = tooltipItem.index;
-                                //             const amount = data.datasets[datasetIndex].data[index];
-                                //             const amountText = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-                                //             const company = data.labels[index];
-                                //             return ' ' + company + ' ' + amountText + ' 円';
-
-                                //         }
-                                //     }
-                                // }
-                            }
-                        });
-
-                    });
-
-            }
-        },
-        mounted() {
-            this.getKakeibos();
-        }
-    });
-</script>
 @endsection

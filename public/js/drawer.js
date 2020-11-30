@@ -54,7 +54,9 @@ window.onload = function() {
 
     // 左右の矢印を押した時のイベント
     var spendDateLeft = document.getElementById('spend-date-left');
+    var spendMonthLeft = document.getElementById('spend-month-left');
     var spendDateRight = document.getElementById('spend-date-right');
+    var spendMonthRight = document.getElementById('spend-month-right');
     spendDateLeft.addEventListener('click', function() {
         today.setDate(today.getDate() - 1);
         year = today.getFullYear();
@@ -76,7 +78,29 @@ window.onload = function() {
         dbSpendDate.value = year + '-' + month + '-' + date;
         incomDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
         dbIncomDate.value = year + '-' + month + '-' + date;
+    })
+    spendMonthLeft.addEventListener('click', function() {
+        today.setMonth(today.getMonth() - 1);
+        year = today.getFullYear();
+        month = today.getMonth() + 1;
+        date = today.getDate();
+        day = weekDay[today.getDay()];
+        spendDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
+        dbSpendDate.value = year + '-' + month + '-' + date;
+        incomDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
+        dbIncomDate.value = year + '-' + month + '-' + date;
+    })
 
+    spendMonthRight.addEventListener('click', function() {
+        today.setMonth(today.getMonth() + 1);
+        year = today.getFullYear();
+        month = today.getMonth() + 1;
+        date = today.getDate();
+        day = weekDay[today.getDay()];
+        spendDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
+        dbSpendDate.value = year + '-' + month + '-' + date;
+        incomDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
+        dbIncomDate.value = year + '-' + month + '-' + date;
     })
 
     var incomDateLeft = document.getElementById('incom-date-left');

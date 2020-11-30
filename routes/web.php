@@ -21,9 +21,6 @@ Route::get('/', function () {
 Route::get('/kakeibo/{date?}', 'App\Http\Controllers\KakeiboController@index')->name('kakeibo.index');
 Route::post('/kakeibo/{date?}', 'App\Http\Controllers\KakeiboController@create');
 
-// Ajaxでデータを取得する
-Route::get('ajax/kakeibo', 'App\Controllers\Ajax\KakeiboController@index');
-
 // 一覧画面
 Route::get('/kakeibo/details', 'App\Http\Controllers\KakeiboController@showDetails')->name('kakeibo.details');
 
