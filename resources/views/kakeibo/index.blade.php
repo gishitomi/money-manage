@@ -24,9 +24,11 @@
         </div>
     </div>
     @if($budget)
-    <div class="graph">
+    <div class="graph" id="app">
         <!--描画領域 -->
         <canvas id="mycanvas"></canvas>
+        <!-- <canvas id="myChart"></canvas> -->
+        {{$log_list}}
     </div>
     <div class="create-box">
         <span class="btn-circle-flat spend-color" id="spend-btn">支出</span>
@@ -202,6 +204,51 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-<script src="{{asset('js/chart.js')}}"></script>
+<!-- <script src="{{asset('js/chart.js')}}"></script> -->
 <script src="{{asset('js/drawer.js')}}"></script>
+<script>
+    // 👇 円グラフを描画 ・・・ ④
+    const ctx = document.getElementById('mycanvas').getContext('2d');
+    this.chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    datasets: [{
+                        data: [
+                            12,
+                            13,
+                            14,
+                            15,
+                            16,
+                            17,
+                            18,
+                        ],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)',
+                        ]
+                    }],
+                    labels: [
+                        '食費',
+                        '家賃',
+                        '趣味',
+                        '通信費',
+                        '交通費',
+                        '交際費',
+                        'その他',
+                    ]
+                },
+                options: {
+                    title: {
+                        display: true,
+                        // fontSize: 45,
+                        // text: '売上統計'
+                    },
+                }
+            });
+</script>
 @endsection

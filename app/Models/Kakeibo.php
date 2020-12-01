@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kakeibo extends Model
 {
     use HasFactory;
+
+    // kakeibosテーブルと関連付ける
+    protected $table = "kakeibos";
 }

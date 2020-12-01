@@ -10,9 +10,9 @@ use Carbon\Carbon;
 class KakeiboController extends Controller
 {
     public function index(string $date) {
-        $budget = Budget::whereDate('date', $date)->first();
-        $past = date('Y-m-d', mktime(0, 0, 0, date('m', strtotime($date)) - 1, date(01), date('Y', strtotime($date))));
-        $future = date('Y-m-d', mktime(0, 0, 0, date('m', strtotime($date)) + 1, date(01), date('Y', strtotime($date))));
+        $budget = Budget::whereDate('date', 'like', $date . '%')->first();
+        $past = date('Y-m', mktime(0, 0, 0, date('m', strtotime($date)), 0, date('Y', strtotime($date))));
+        $future = date('Y-m', mktime(0, 0, 0, date('m', strtotime($date)) + 2, 0, date('Y', strtotime($date))));
         $firstDate = date('Y-m-01', strtotime($date));
         $lastDate = date('Y-m-t', strtotime($date));
 
@@ -34,8 +34,10 @@ class KakeiboController extends Controller
         $allTotallIncom = $allTotalIncomDate->sum('money');
 
         // グラフへの引き渡し
-        // $keys = ['家賃', '交際費', '食費'];
-        // $counts = [10, 4, 21];
+        // 2020-04から始まるデータのみを取得
+        // $log_list = Kakeibo::where('date', 'like', '2020-04' . '%')->get();
+        $log_list = Kakeibo::where('date', 'like', $date . '%')->get();
+
 
         return view('kakeibo.index', [
             'budget' => $budget,
@@ -45,6 +47,7 @@ class KakeiboController extends Controller
             'totalSpend' => $totalSpend,
             'totalIncom' => $totalIncom,
             'allTotalIncom' => $allTotallIncom,
+            'log_list' => $log_list,
         ]); 
     }
     public function create(string $date, Request $request) {
