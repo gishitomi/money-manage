@@ -34,9 +34,11 @@ class KakeiboController extends Controller
         $allTotallIncom = $allTotalIncomDate->sum('money');
 
         // グラフへの引き渡し
-        // 2020-04から始まるデータのみを取得
-        // $log_list = Kakeibo::where('date', 'like', '2020-04' . '%')->get();
         $log_list = Kakeibo::where('date', 'like', $date . '%')->get();
+        foreach ($log_list as $log) {
+            $money[] = $log->money;
+            $type[] = $log->type;
+        }
 
 
         return view('kakeibo.index', [
@@ -48,6 +50,8 @@ class KakeiboController extends Controller
             'totalIncom' => $totalIncom,
             'allTotalIncom' => $allTotallIncom,
             'log_list' => $log_list,
+            'type' => $type,
+            'money' => $money,
         ]); 
     }
     public function create(string $date, Request $request) {

@@ -22,6 +22,8 @@
             </a>
             <p id="right-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date))+2, 0, 0))}}月</p>
         </div>
+        <!-- 配列形式で表示するにはjson形式にする必要がある -->
+        <!-- @json($money) -->
     </div>
     @if($budget)
     <div class="graph" id="app">
@@ -207,21 +209,15 @@
 <!-- <script src="{{asset('js/chart.js')}}"></script> -->
 <script src="{{asset('js/drawer.js')}}"></script>
 <script>
-    // 👇 円グラフを描画 ・・・ ④
+    var money = @json($money);
+    var type = @json($type);
+    // 円グラフを描画
     const ctx = document.getElementById('mycanvas').getContext('2d');
     this.chart = new Chart(ctx, {
                 type: 'pie',
                 data: {
                     datasets: [{
-                        data: [
-                            12,
-                            13,
-                            14,
-                            15,
-                            16,
-                            17,
-                            18,
-                        ],
+                        data: money,
                         backgroundColor: [
                             'rgb(255, 99, 132)',
                             'rgb(255, 159, 64)',
@@ -232,15 +228,16 @@
                             'rgb(201, 203, 207)',
                         ]
                     }],
-                    labels: [
-                        '食費',
-                        '家賃',
-                        '趣味',
-                        '通信費',
-                        '交通費',
-                        '交際費',
-                        'その他',
-                    ]
+                    // labels: [
+                    //     '食費',
+                    //     '家賃',
+                    //     '趣味',
+                    //     '通信費',
+                    //     '交通費',
+                    //     '交際費',
+                    //     'その他',
+                    // ]
+                    labels: type,
                 },
                 options: {
                     title: {
