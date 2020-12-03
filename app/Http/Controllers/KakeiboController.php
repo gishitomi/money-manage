@@ -66,10 +66,6 @@ class KakeiboController extends Controller
 
         return redirect(route('kakeibo.index', ['date' => $budget->date]));
     }
-
-    // public function() showNext()
-
-
     public function showDetails() {
         $details = Kakeibo::all();
         return view('kakeibo.details', [

@@ -206,46 +206,57 @@
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
-<!-- <script src="{{asset('js/chart.js')}}"></script> -->
 <script src="{{asset('js/drawer.js')}}"></script>
 <script>
-    var money = @json($money);
-    var type = @json($type);
+    const moneys = {
+        money: @json($money),
+        type: @json($type),
+    };
+
+    // lodashでデータを加工
+    const groupedTypes = _.groupBy(moneys, 'type');
+    const amounts = _.map(groupedTypes, spendMoney => {
+        return _.sumBy(spendMoney, 'money'); // 金額合計
+    });
+    const typeNames = _.keys(groupedTypes);
+    console.log(groupedTypes);
+    console.log(amounts);
+
     // 円グラフを描画
     const ctx = document.getElementById('mycanvas').getContext('2d');
     this.chart = new Chart(ctx, {
-                type: 'pie',
-                data: {
-                    datasets: [{
-                        data: money,
-                        backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(255, 159, 64)',
-                            'rgb(255, 205, 86)',
-                            'rgb(75, 192, 192)',
-                            'rgb(54, 162, 235)',
-                            'rgb(153, 102, 255)',
-                            'rgb(201, 203, 207)',
-                        ]
-                    }],
-                    // labels: [
-                    //     '食費',
-                    //     '家賃',
-                    //     '趣味',
-                    //     '通信費',
-                    //     '交通費',
-                    //     '交際費',
-                    //     'その他',
-                    // ]
-                    labels: type,
-                },
-                options: {
-                    title: {
-                        display: true,
-                        // fontSize: 45,
-                        // text: '売上統計'
-                    },
-                }
-            });
+        type: 'pie',
+        data: {
+            datasets: [{
+                data: moneys.money,
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(255, 159, 64)',
+                    'rgb(255, 205, 86)',
+                    'rgb(75, 192, 192)',
+                    'rgb(54, 162, 235)',
+                    'rgb(153, 102, 255)',
+                    'rgb(201, 203, 207)',
+                ]
+            }],
+            // labels: [
+            //     '食費',
+            //     '家賃',
+            //     '趣味',
+            //     '通信費',
+            //     '交通費',
+            //     '交際費',
+            //     'その他',
+            // ]
+            labels: moneys.type,
+        },
+        options: {
+            title: {
+                display: true,
+                // fontSize: 45,
+                // text: '支出額の統計'
+            },
+        }
+    });
 </script>
 @endsection
