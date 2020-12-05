@@ -44,7 +44,7 @@
                 </div>
                 <div class="budget-edit-btn">
                     @if($budget)
-                    <a href="{{route('budgets.edit')}}">
+                    <a href="{{route('budgets.edit', ['date' => $date])}}">
                     <button class="btn btn-primary btn-block">予算を編集</button>
                     </a>
                     @else

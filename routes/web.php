@@ -25,4 +25,4 @@ Route::post('/kakeibo/{date?}', 'App\Http\Controllers\KakeiboController@create')
 Route::get('/kakeibo/details', 'App\Http\Controllers\KakeiboController@showDetails')->name('kakeibo.details');
 
 // 予算編集、設定画面
-Route::get('/budgets/edit', 'App\Http\Controllers\BudgetController@showEditForm')->name('budgets.edit');
+Route::get('/budgets/edit/{date?}', 'App\Http\Controllers\BudgetController@showEditForm')->name('budgets.edit');

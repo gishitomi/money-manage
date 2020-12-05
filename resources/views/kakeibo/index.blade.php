@@ -208,10 +208,10 @@
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
 <script src="{{asset('js/drawer.js')}}"></script>
 <script>
-    const moneys = {
+    const moneys = [{
         money: @json($money),
         type: @json($type),
-    };
+    }];
 
     // lodashでデータを加工
     const groupedTypes = _.groupBy(moneys, 'type');
@@ -219,7 +219,7 @@
         return _.sumBy(spendMoney, 'money'); // 金額合計
     });
     const typeNames = _.keys(groupedTypes);
-    console.log(groupedTypes);
+    console.table(moneys);
     console.log(amounts);
 
     // 円グラフを描画
@@ -229,6 +229,7 @@
         data: {
             datasets: [{
                 data: moneys.money,
+                // data: amounts,
                 backgroundColor: [
                     'rgb(255, 99, 132)',
                     'rgb(255, 159, 64)',
@@ -247,8 +248,9 @@
             //     '交通費',
             //     '交際費',
             //     'その他',
-            // ]
+            // ],
             labels: moneys.type,
+            // labels: typeNames,
         },
         options: {
             title: {

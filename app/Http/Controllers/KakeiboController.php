@@ -35,6 +35,8 @@ class KakeiboController extends Controller
 
         // グラフへの引き渡し
         $log_list = Kakeibo::where('date', 'like', $date . '%')->get();
+        $money = [];
+        $type = [];
         foreach ($log_list as $log) {
             $money[] = $log->money;
             $type[] = $log->type;
