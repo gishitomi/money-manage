@@ -48,14 +48,14 @@
                     <button class="btn btn-primary btn-block">予算を編集</button>
                     </a>
                     @else
-                    <a href="{{route('budgets.edit')}}">
+                    <a href="{{route('budgets.edit', ['date' => $date])}}">
                         <button class="btn btn-block btn-success">予算を設定する</button>
                     </a>
                     @endif
                 </div>
 
             </div>
-            <div class="col-md-10 col-12">
+            <div class="col-md-10 col-12 main-display">
                 @yield('content')
             </div>
         </div>

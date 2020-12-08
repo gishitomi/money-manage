@@ -45,3 +45,7 @@ header h1 {
 .main-contents-row {
     height: 100%;
 }
+
+.main-display {
+    height: 1000px;
+}

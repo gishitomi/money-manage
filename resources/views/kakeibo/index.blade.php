@@ -214,13 +214,25 @@
     }];
 
     // lodashでデータを加工
-    const groupedTypes = _.groupBy(moneys, 'type');
-    const amounts = _.map(groupedTypes, spendMoney => {
-        return _.sumBy(spendMoney, 'money'); // 金額合計
+    // const groupedTypes = _.groupBy(moneys, 'type');
+    // const amounts = _.map(groupedTypes, spendMoney => {
+    //     return _.sumBy(spendMoney, 'money'); // 金額合計
+    // });
+    // const typeNames = _.keys(groupedTypes);
+
+
+    const groupedTypes = _.groupBy(moneys, value => {
+        return value.type;
     });
-    const typeNames = _.keys(groupedTypes);
-    console.table(moneys);
-    console.log(amounts);
+
+    const amounts = _.map(groupedTypes, group => {
+        return {
+            type: group[0].type,
+            money: _.sumBy(group, 'money')
+        };
+    });
+    console.table(moneys)
+    console.table(amounts);
 
     // 円グラフを描画
     const ctx = document.getElementById('mycanvas').getContext('2d');
