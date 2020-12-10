@@ -22,15 +22,11 @@
             </a>
             <p id="right-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date))+2, 0, 0))}}月</p>
         </div>
-        <!-- 配列形式で表示するにはjson形式にする必要がある -->
-        <!-- @json($money) -->
     </div>
     @if($budget)
     <div class="graph" id="app">
         <!--描画領域 -->
         <canvas id="mycanvas"></canvas>
-        <!-- <canvas id="myChart"></canvas> -->
-        {{$log_list}}
     </div>
     <div class="create-box">
         <span class="btn-circle-flat spend-color" id="spend-btn">支出</span>
@@ -60,62 +56,62 @@
                     <textarea name="description" id="description" cols="40" rows="5"></textarea>
                 </div>
                 <div class="spend-type-box">
-                    <input id="type-1" class="radio-inline__input" type="radio" name="type" value="1" />
+                    <input id="type-1" class="radio-inline__input" type="radio" name="type" value="食費" />
                     <label class="radio-inline__label" for="type-1">
                         <i class="fas fa-utensils fa-lg"></i><br>
                         食費
                     </label>
-                    <input id="type-2" class="radio-inline__input" type="radio" name="type" value="2" />
+                    <input id="type-2" class="radio-inline__input" type="radio" name="type" value="光熱費" />
                     <label class="radio-inline__label" for="type-2">
                         <i class="far fa-lightbulb fa-lg"></i><br>
                         光熱費
                     </label>
-                    <input id="type-3" class="radio-inline__input" type="radio" name="type" value="3" />
+                    <input id="type-3" class="radio-inline__input" type="radio" name="type" value="家賃" />
                     <label class="radio-inline__label" for="type-3">
                         <i class="fas fa-home fa-lg"></i><br>
                         家賃
                     </label>
-                    <input id="type-4" class="radio-inline__input" type="radio" name="type" value="4" />
+                    <input id="type-4" class="radio-inline__input" type="radio" name="type" value="交通費"/>
                     <label class="radio-inline__label" for="type-4">
                         <i class="fas fa-car fa-lg"></i><br>
                         交通費
                     </label>
-                    <input id="type-5" class="radio-inline__input" type="radio" name="type" value="5" />
+                    <input id="type-5" class="radio-inline__input" type="radio" name="type" value="通信費" />
                     <label class="radio-inline__label" for="type-5">
                         <i class="fas fa-wifi fa-lg"></i><br>
                         通信費
                     </label>
-                    <input id="type-6" class="radio-inline__input" type="radio" name="type" value="6" />
+                    <input id="type-6" class="radio-inline__input" type="radio" name="type" value="交際費"/>
                     <label class="radio-inline__label" for="type-6">
                         <i class="fas fa-handshake fa-lg"></i><br>
                         交際費
                     </label>
-                    <input id="type-7" class="radio-inline__input" type="radio" name="type" value="7" />
+                    <input id="type-7" class="radio-inline__input" type="radio" name="type" value="趣味"/>
                     <label class="radio-inline__label" for="type-7">
                         <i class="fas fa-star fa-lg"></i><br>
                         趣味
                     </label>
-                    <input id="type-8" class="radio-inline__input" type="radio" name="type" value="8" />
+                    <input id="type-8" class="radio-inline__input" type="radio" name="type" value="貯蓄"/>
                     <label class="radio-inline__label" for="type-8">
                         <i class="fas fa-yen-sign fa-lg"></i><br>
                         貯蓄
                     </label>
-                    <input id="type-9" class="radio-inline__input" type="radio" name="type" value="9" />
+                    <input id="type-9" class="radio-inline__input" type="radio" name="type" value="被服費"/>
                     <label class="radio-inline__label" for="type-9">
                         <i class="fas fa-tshirt fa-lg"></i><br>
                         被服費
                     </label>
-                    <input id="type-10" class="radio-inline__input" type="radio" name="type" value="10" />
+                    <input id="type-10" class="radio-inline__input" type="radio" name="type" value="美容費"/>
                     <label class="radio-inline__label" for="type-10">
                         <i class="fas fa-cut fa-lg"></i><br>
                         美容費
                     </label>
-                    <input id="type-11" class="radio-inline__input" type="radio" name="type" value="11" />
+                    <input id="type-11" class="radio-inline__input" type="radio" name="type" value="医療費"/>
                     <label class="radio-inline__label" for="type-11">
                         <i class="fas fa-hospital-alt fa-lg"></i><br>
                         医療費
                     </label>
-                    <input id="type-12" class="radio-inline__input" type="radio" name="type" value="12" />
+                    <input id="type-12" class="radio-inline__input" type="radio" name="type" value="その他"/>
                     <label class="radio-inline__label" for="type-12">
                         <i class="fas fa-comment-dots fa-lg"></i><br>
                         その他
@@ -149,12 +145,12 @@
                     <textarea name="description" id="incom-description" cols="40" rows="5"></textarea>
                 </div>
                 <div class="incom-type-box">
-                    <input id="type-101" class="incom_radio-inline__input" type="radio" name="type" value="101" />
+                    <input id="type-101" class="incom_radio-inline__input" type="radio" name="type" value="給与" />
                     <label class="radio-inline__label" for="type-101">
                         <i class="fas fa-yen-sign fa-lg"></i><br>
                         給与
                     </label>
-                    <input id="type-102" class="incom_radio-inline__input" type="radio" name="type" value="102" />
+                    <input id="type-102" class="incom_radio-inline__input" type="radio" name="type" value="その他" />
                     <label class="radio-inline__label" for="type-102">
                         <i class="fas fa-piggy-bank fa-lg"></i><br>
                         その他
@@ -190,7 +186,7 @@
         <div class="not-exist-msg">
             <p>データは存在しません。<br>支出予算額から入力してください。</p>
             <div class="not-exist-btn">
-                <a href="{{route('budgets.edit')}}">
+                <a href="{{route('budgets.edit', ['date' => $date])}}">
                     <button class="btn btn-block btn-success">予算を設定する</button>
                 </a>
             </div>

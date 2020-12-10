@@ -6,6 +6,7 @@ header {
 
 body {
     font-family: sans-serif;
+    overflow: hidden;
 }
 
 header h1 {
@@ -47,5 +48,6 @@ header h1 {
 }
 
 .main-display {
-    height: 1000px;
+    height: 730px;
+    overflow: auto;
 }

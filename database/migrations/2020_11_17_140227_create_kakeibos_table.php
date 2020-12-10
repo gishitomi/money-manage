@@ -15,7 +15,7 @@ class CreateKakeibosTable extends Migration
     {
         Schema::create('kakeibos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('type');
+            $table->string('type');
             $table->date('date');
             $table->integer('money');
             $table->integer('money_type');

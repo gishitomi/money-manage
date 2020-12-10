@@ -15,11 +15,12 @@ class KakeiboTableSeeder extends Seeder
      */
     public function run()
     {
-        foreach(range(1, 9) as $number) {
+        $kakeibo_type = ['食費', '家賃', '趣味', '交通費', '通信費', '被服費'];
+        foreach($kakeibo_type as $item) {
             DB::table('kakeibos')->insert([
-                'type' => $number,
+                'type' => $item,
                 'date' => '2020/11/17',
-                'money' => $number * 100,
+                'money' => 100,
                 'money_type' => 1,
                 'description' => 'テスト',
                 'created_at' => Carbon::now(),

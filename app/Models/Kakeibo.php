@@ -11,4 +11,5 @@ class Kakeibo extends Model
 
     // kakeibosテーブルと関連付ける
     protected $table = "kakeibos";
+    
 }

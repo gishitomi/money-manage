@@ -10,7 +10,7 @@
                 // Ajaxで家計簿データを取得
                 fetch('/ajax/kakeibo?date=' + this.date).then(response => response.json()).then(data => {
                     if (this.chart) {
-                         // チャートが存在していれば初期化
+                        // チャートが存在していれば初期化
                         this.chart.destroy();
                     }
                     const groupedTypes = _.groupBy(data, 'type');
@@ -42,13 +42,27 @@
                             title: {
                                 display: true,
                             },
-                        }
+                            tooltips: {
+                                callbacks: {
+                                    label(tooltipItem, data) {
+
+                                        const datasetIndex = tooltipItem.datasetIndex;
+                                        const index = tooltipItem.index;
+                                        const amount = data.datasets[datasetIndex].data[index];
+                                        const amountText = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+                                        const company = data.labels[index];
+                                        return ' ' + company + ' ' + amountText + ' 円';
+
+                                    }
+                                }
+                            },
+                        },
                     });
                 });
             }
         },
         mounted() {
             this.getKakeibo();
-        }
+        },
     });
 </script>
