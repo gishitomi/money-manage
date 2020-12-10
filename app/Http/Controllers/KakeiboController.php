@@ -41,6 +41,7 @@ class KakeiboController extends Controller
             $money[] = $log->money;
             $type[] = $log->type;
         }
+        
 
 
         return view('kakeibo.index', [
