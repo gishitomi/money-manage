@@ -13,6 +13,20 @@ header h1 {
     font-size: 35px;
 }
 
+.header-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-right p {
+    margin: 0;
+}
+
+.auth-btns {
+    margin-left: 20px;
+}
+
 .main-contents {
     height: 92vh;
     background-color: whitesmoke;

@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect(route('kakeibo.index', ['date' => '2020-12']));
+        return redirect(route('kakeibo.index', ['date' => date('Y-m')]));
     }
 }

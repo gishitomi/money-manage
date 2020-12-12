@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\HomeController@index');
+Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 
 // 会員登録・ログイン・ログアウト・パスワード再設定の各機能で必要なルーティング設定をすべて定義
 Auth::routes();
@@ -33,3 +33,6 @@ Route::post('/budgets/edit/{date?}', 'App\Http\Controllers\BudgetController@edit
 
 // Chart.jsでデータを渡すためのAjax用URL
 Route::get('ajax/kakeibo', 'App\Http\Controllers\Ajax\KakeiboController@index');
+
+// ゲストログイン
+Route::get('/login/guest', 'App\Http\Controllers\Auth\LoginController@guestLogin')->name(('guest.login'));
