@@ -15,6 +15,7 @@ class KakeiboTableSeeder extends Seeder
      */
     public function run()
     {
+        $user = DB::table('users')->first();
         $kakeibo_type = ['食費', '家賃', '趣味', '交通費', '通信費', '被服費'];
         foreach($kakeibo_type as $item) {
             DB::table('kakeibos')->insert([
@@ -24,6 +25,7 @@ class KakeiboTableSeeder extends Seeder
                 'money_type' => 1,
                 'description' => 'テスト',
                 'created_at' => Carbon::now(),
+                'user_id' => $user->id,
             ]);
         }
     }
