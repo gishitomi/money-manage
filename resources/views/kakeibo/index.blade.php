@@ -48,6 +48,13 @@
                     <span id="spend-date-right"><i class="fas fa-long-arrow-alt-right fa-lg"></i></span>
                     <span id="spend-month-right"><i class="fas fa-long-arrow-alt-right fa-lg"></i></span>
                 </div>
+                @if($errors->any())
+                <div class="error-msg-box">
+                @foreach($errors as $message)
+                <p>{{$message}}</p>
+                @endforeach
+                </div>
+                @endif
                 <input type="hidden" id="db-spend-date" name="date">
                 <input type="hidden" name="money_type" value="1">
                 <h3>支出金額を入力</h3>

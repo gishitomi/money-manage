@@ -16,7 +16,7 @@
             <div class="container">
                 <div class="message">
                     <h1>タスク管理を人生にたとえたら、<br>大げさでしょうか？</h1>
-                    <h2>タスク管理アプリ「ManageToDo」</h2>
+                    <h2>家計簿アプリ「Money Manage App」</h2>
                 </div>
             </div>
             <div class="container">
