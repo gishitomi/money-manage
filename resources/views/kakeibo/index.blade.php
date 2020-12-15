@@ -50,7 +50,7 @@
                 </div>
                 @if($errors->any())
                 <div class="error-msg-box">
-                @foreach($errors as $message)
+                @foreach($errors->all() as $message)
                 <p>{{$message}}</p>
                 @endforeach
                 </div>

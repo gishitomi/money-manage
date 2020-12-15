@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateKakeibo extends FormRequest
+class CreateBudgets extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,13 @@ class CreateKakeibo extends FormRequest
     public function rules()
     {
         return [
-            'money' => 'required|integer|min:1',
-            'type' => 'required',
+            'budget' => 'required|integer|min:1',
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'budget' => '予算額',
         ];
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateKakeibo;
 use App\Models\Kakeibo;
 use App\Models\Budget;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 class KakeiboController extends Controller
@@ -57,7 +59,7 @@ class KakeiboController extends Controller
             'money' => $money,
         ]); 
     }
-    public function create(string $date, Request $request) {
+    public function create(string $date, CreateKakeibo $request) {
         $budget = Budget::whereDate('date', $date)->first();
         $kakeibo = new Kakeibo();
         $kakeibo->type = $request->type;
@@ -65,7 +67,7 @@ class KakeiboController extends Controller
         $kakeibo->money = $request->money;
         $kakeibo->money_type = $request->money_type;
         $kakeibo->description = $request->description;
-        $kakeibo->save();
+        Auth::user()->kakeibos()->save($kakeibo);
 
         return redirect(route('kakeibo.index', ['date' => $budget->date]));
     }

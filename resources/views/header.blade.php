@@ -17,7 +17,13 @@
             <div class="container-fluid d-flex justify-content-between">
                 <h1 class="header-title">MoneyManageApp</h1>
                 <div class="header-right">
-                    ようこそ、〇〇さん
+                <p>ようこそ、〇〇さん</p>
+                    <div class="auth-btns">
+                        <form action="{{route('logout')}}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-dark">ログアウト</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </header>
