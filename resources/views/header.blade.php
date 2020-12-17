@@ -17,13 +17,15 @@
             <div class="container-fluid d-flex justify-content-between">
                 <h1 class="header-title">MoneyManageApp</h1>
                 <div class="header-right">
-                <p>ようこそ、〇〇さん</p>
+                    @if(Auth::check())
+                    <p>ようこそ、{{$user_name}}さん</p>
                     <div class="auth-btns">
                         <form action="{{route('logout')}}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-dark">ログアウト</button>
                         </form>
                     </div>
+                    @endif
                 </div>
             </div>
         </header>

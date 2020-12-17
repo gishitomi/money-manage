@@ -15,9 +15,11 @@
     <div class="container-wrapper">
         <header class="navbar">
             <div class="container-fluid d-flex justify-content-between">
-                <h1 class="header-title">MoneyManageApp</h1>
+                <a href="{{route('home')}}" class="header-title">
+                    <h1>MoneyManageApp</h1>
+                </a>
                 <div class="header-right">
-                    <p>ようこそ、〇〇さん</p>
+                    <p>ようこそ、{{$user_name}}さん</p>
                     <div class="auth-btns">
                         <form action="{{route('logout')}}" method="POST">
                             @csrf
@@ -51,7 +53,7 @@
                 <div class="budget-edit-btn">
                     @if($budget)
                     <a href="{{route('budgets.edit', ['date' => $date])}}">
-                    <button class="btn btn-primary btn-block">予算を編集</button>
+                        <button class="btn btn-primary btn-block">予算を編集</button>
                     </a>
                     @else
                     <a href="{{route('budgets.edit', ['date' => $date])}}">

@@ -35,16 +35,8 @@ class KakeiboController extends Controller
         $allTotalIncomDate = Kakeibo::where('money_type', 2);
         $allTotallIncom = $allTotalIncomDate->sum('money');
 
-        // グラフへの引き渡し
-        $log_list = Kakeibo::where('date', 'like', $date . '%')->get();
-        $money = [];
-        $type = [];
-        foreach ($log_list as $log) {
-            $money[] = $log->money;
-            $type[] = $log->type;
-        }
-        
-
+        // ログインしてるユーザー名を取得
+        $user_name = Auth::user()->name;
 
         return view('kakeibo.index', [
             'budget' => $budget,
@@ -54,9 +46,7 @@ class KakeiboController extends Controller
             'totalSpend' => $totalSpend,
             'totalIncom' => $totalIncom,
             'allTotalIncom' => $allTotallIncom,
-            'log_list' => $log_list,
-            'type' => $type,
-            'money' => $money,
+            'user_name' => $user_name,
         ]); 
     }
     public function create(string $date, CreateKakeibo $request) {

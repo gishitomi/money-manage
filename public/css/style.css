@@ -9,8 +9,15 @@ body {
     overflow: hidden;
 }
 
-header h1 {
+.header-title {
+    color: white;
+    text-decoration: none;
     font-size: 35px;
+}
+
+.header-title:hover {
+    color: white;
+    text-decoration: none;
 }
 
 .header-right {
