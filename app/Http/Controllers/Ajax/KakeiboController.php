@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Kakeibo;
 use App\Models\Budget;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class KakeiboController extends Controller
 {
     public function index(Request $request) {
-        return Kakeibo::where('date', 'like', $request->date . '%')->where('money_type', 1)->get();
+        return Auth::user()->kakeibos()->where('date', 'like', $request->date . '%')->where('money_type', 1)->get();
     }
 }

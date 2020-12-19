@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card register-box">
-                <div class="card-header tomato">パスワードを再発行する</div>
+                <div class="card-header kakeibo">パスワードを再発行する</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">

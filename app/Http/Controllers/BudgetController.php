@@ -9,29 +9,33 @@ use Illuminate\Support\Facades\Auth;
 
 class BudgetController extends Controller
 {
-    public function showEditForm(string $date) {
-        $budget = Budget::whereDate('date', 'like', $date . '%')->first();
+    public function showEditForm(string $date)
+    {
+        $budgets = Auth::user()->budgets();
+        $budget = $budgets->whereDate('date', 'like', $date . '%')->first();
+        // ログインしてるユーザー名を取得
+        $user_name = Auth::user()->name;
         return view('budgets.edit', [
             'date' => $date,
             'budget' => $budget,
+            'user_name' => $user_name,
         ]);
     }
-    public function edit(string $date, CreateBudgets $request) {
-        $budget = Budget::whereDate('date', 'like', $date . '%')->first();
-        if(isset($budget)) {
+    public function edit(string $date, CreateBudgets $request)
+    {
+        $budgets = Auth::user()->budgets();
+        $budget = $budgets->whereDate('date', 'like', $date . '%')->first();
+        if (isset($budget)) {
             $edit_budget = $budget;
             $edit_budget->date = $request->date;
             $edit_budget->money = $request->budget;
-            // $edit_budget->save();
 
             // ユーザーと紐付け
             Auth::user()->budgets()->save($edit_budget);
-        }
-        else {
+        } else {
             $new_budget = new Budget();
             $new_budget->date = $request->date;
             $new_budget->money = $request->budget;
-            // $new_budget->save();
             Auth::user()->budgets()->save($new_budget);
         }
         return redirect(route('kakeibo.index', ['date' => $date]));

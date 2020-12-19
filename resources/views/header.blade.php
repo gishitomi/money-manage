@@ -15,7 +15,9 @@
     <div class="container-wrapper">
         <header class="navbar">
             <div class="container-fluid d-flex justify-content-between">
-                <h1 class="header-title">MoneyManageApp</h1>
+                <a href="{{route('home')}}" class="header-title">
+                    <h1>MoneyManageApp</h1>
+                </a>
                 <div class="header-right">
                     @if(Auth::check())
                     <p>ようこそ、{{$user_name}}さん</p>
