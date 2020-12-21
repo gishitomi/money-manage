@@ -72,3 +72,11 @@ body {
     height: 730px;
     overflow: auto;
 }
+
+.icon-color {
+    color: green;
+}
+
+p {
+    margin: 0;
+}

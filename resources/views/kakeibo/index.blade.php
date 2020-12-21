@@ -12,13 +12,13 @@
     <div class="date-arrow">
         <div class="arrow-left">
             <a href="{{route('kakeibo.index', ['date' => $past])}}" id="left-month-btn">
-                <i class="fas fa-arrow-left fa-2x"></i>
+            <i class="fas fa-chevron-left fa-3x icon-color"></i>
             </a>
             <p id="left-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date)), 0, 0))}}月</p>
         </div>
         <div class="arrow-right">
             <a href="{{route('kakeibo.index', ['date' => $future])}}" id="right-month-btn">
-                <i class="fas fa-arrow-right fa-2x"></i>
+            <i class="fas fa-chevron-right fa-3x icon-color"></i>
             </a>
             <p id="right-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date))+2, 0, 0))}}月</p>
         </div>
@@ -181,7 +181,7 @@
     <div class="access-box">
         <div class="detail-wrapper">
             <a href="{{route('kakeibo.details')}}">
-                <button class="btn btn-block btn-primary">詳細一覧</button>
+                <button class="btn btn-block btn-success">詳細一覧</button>
             </a>
         </div>
         <button class="btn btn-success">

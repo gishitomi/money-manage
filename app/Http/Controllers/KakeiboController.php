@@ -11,7 +11,8 @@ use Carbon\Carbon;
 
 class KakeiboController extends Controller
 {
-    public function index(string $date) {
+    public function index(string $date)
+    {
         $budgets = Auth::user()->budgets();
         $budget = $budgets->whereDate('date', 'like', $date . '%')->first();
         $past = date('Y-m', mktime(0, 0, 0, date('m', strtotime($date)), 0, date('Y', strtotime($date))));
@@ -20,7 +21,6 @@ class KakeiboController extends Controller
         $lastDate = date('Y-m-t', strtotime($date));
 
         // 支出金額のしぼりこみ
-        // $totalSpendDate = Kakeibo::query();
         $totalSpendDate = Auth::user()->kakeibos();
         $totalSpendDate->whereBetween('date', [$firstDate, $lastDate]);
         $totalSpendDate->where('money_type', 1);
@@ -50,9 +50,10 @@ class KakeiboController extends Controller
             'totalIncom' => $totalIncom,
             'allTotalIncom' => $allTotallIncom,
             'user_name' => $user_name,
-        ]); 
+        ]);
     }
-    public function create(string $date, CreateKakeibo $request) {
+    public function create(string $date, CreateKakeibo $request)
+    {
         $budgets = Auth::user()->budgets();
         $budget = $budgets->whereDate('date', $date)->first();
         $kakeibo = new Kakeibo();
@@ -65,10 +66,9 @@ class KakeiboController extends Controller
 
         return redirect(route('kakeibo.index', ['date' => $budget->date]));
     }
-    public function showDetails() {
+    public function showDetails()
+    {
         $details = Kakeibo::all();
-        return view('kakeibo.details', [
-            'details' => $details,
-        ]);
+        return view('kakeibo.details');
     }
 }

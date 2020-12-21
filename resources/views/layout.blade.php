@@ -39,21 +39,24 @@
                     <p>{{$budget->money}}円</p>
                 </div>
                 <div class="remaining">
+                    @if($budget->money - $totalSpend > 0)
                     <p>残り<br><span style="font-weight: 900;">{{$budget->money - $totalSpend}}</span>円<br>使用できます。</p>
+                    @elseif($budget->money - $totalSpend < 0)
+                    <p>設定金額より<br><span style="font-weight: 900;">{{($budget->money - $totalSpend) * -1}}</span>円<br>オーバーしています。</p>
+                    @else
+                    @endif
                 </div>
                 @else
                 <p>存在しないよ</p>
                 @endif
                 <div class="total-money">
-                    <p>累計金額</p>
-                    <p><span>{{$allTotalIncom}}</span>円</p>
-                    <p>前月との差</p>
-                    <p>〇〇円</p>
+                    <p>累計収入金額</p>
+                    <p><span style="font-weight: 900;">{{$allTotalIncom}}</span>円</p>
                 </div>
                 <div class="budget-edit-btn">
                     @if($budget)
                     <a href="{{route('budgets.edit', ['date' => $date])}}">
-                        <button class="btn btn-primary btn-block">予算を編集</button>
+                        <button class="btn btn-success btn-block">予算を編集</button>
                     </a>
                     @else
                     <a href="{{route('budgets.edit', ['date' => $date])}}">
