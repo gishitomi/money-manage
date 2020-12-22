@@ -93,7 +93,8 @@ class KakeiboController extends Controller
         $allTotallIncom = $allTotalIncomDate->sum('money');
         // ログインしてるユーザー名を取得
         $user_name = Auth::user()->name;
-        $details = Auth::user()->kakeibos()->get();
+        $details = Auth::user()->kakeibos();
+        $date_details = $details->whereDate('date', 'like', $date . '%')->get();
         return view('kakeibo.details', [
             'budgets' => $budgets,
             'budget' => $budget,
@@ -104,7 +105,7 @@ class KakeiboController extends Controller
             'totalIncom' => $totalIncom,
             'allTotalIncom' => $allTotallIncom,
             'user_name' => $user_name,
-            'details' => $details,
+            'details' => $date_details,
         ]);
     }
 }

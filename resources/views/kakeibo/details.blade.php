@@ -19,6 +19,7 @@
                     <p class="title-text">{{$detail->type}}</p>
                 </div>
             </td>
+            <td>{{$detail->description}}</td>
             <td>{{$detail->money}}円</td>
         </tr>
         @endforeach
