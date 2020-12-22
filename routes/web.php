@@ -22,11 +22,11 @@ Auth::routes();
 // ページ認証...ログインしていないとアクセスできないようにする
 Route::group(['middleware' => 'auth'], function() {
     // インデックス画面
-Route::get('/kakeibo/{date?}', 'App\Http\Controllers\KakeiboController@index')->name('kakeibo.index');
-Route::post('/kakeibo/{date?}', 'App\Http\Controllers\KakeiboController@create');
+Route::get('/kakeibo/{date}', 'App\Http\Controllers\KakeiboController@index')->name('kakeibo.index');
+Route::post('/kakeibo/{date}', 'App\Http\Controllers\KakeiboController@create');
 
 // 一覧画面
-Route::get('/kakeibo/details', 'App\Http\Controllers\KakeiboController@showDetails')->name('kakeibo.details');
+Route::get('/kakeibo/details/{date}', 'App\Http\Controllers\KakeiboController@showDetails')->name('kakeibo.details');
 
 // 予算編集、設定画面
 Route::get('/budgets/edit/{date?}', 'App\Http\Controllers\BudgetController@showEditForm')->name('budgets.edit');

@@ -1,0 +1,41 @@
+.date-title {
+    font-size: 25px;
+    font-weight: 800;
+    border-bottom: 2px solid whitesmoke;
+}
+
+.kakeibo-table {
+    width: 50%;
+    /* margin: 0 auto; */
+}
+
+.table-row {
+    margin: 20px 0;
+}
+
+.kakeibo-table td {
+    text-align: center;
+}
+
+.table-left {
+    display: flex;
+}
+
+.table-left-text {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.date-text {
+    font-size: 13px;
+    color: gray;
+}
+
+.title-text {
+    font-size: 17px;
+}
+
+.table-icon {
+    width: 40px;
+    height: 40px;
+}

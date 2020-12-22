@@ -12,13 +12,13 @@
     <div class="date-arrow">
         <div class="arrow-left">
             <a href="{{route('kakeibo.index', ['date' => $past])}}" id="left-month-btn">
-            <i class="fas fa-chevron-left fa-3x icon-color"></i>
+                <i class="fas fa-chevron-left fa-3x icon-color"></i>
             </a>
             <p id="left-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date)), 0, 0))}}月</p>
         </div>
         <div class="arrow-right">
             <a href="{{route('kakeibo.index', ['date' => $future])}}" id="right-month-btn">
-            <i class="fas fa-chevron-right fa-3x icon-color"></i>
+                <i class="fas fa-chevron-right fa-3x icon-color"></i>
             </a>
             <p id="right-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date))+2, 0, 0))}}月</p>
         </div>
@@ -50,9 +50,9 @@
                 </div>
                 @if($errors->any())
                 <div class="error-msg-box">
-                @foreach($errors->all() as $message)
-                <p>{{$message}}</p>
-                @endforeach
+                    @foreach($errors->all() as $message)
+                    <p>{{$message}}</p>
+                    @endforeach
                 </div>
                 @endif
                 <input type="hidden" id="db-spend-date" name="date">
@@ -78,7 +78,7 @@
                         <i class="fas fa-home fa-lg"></i><br>
                         家賃
                     </label>
-                    <input id="type-4" class="radio-inline__input" type="radio" name="type" value="交通費"/>
+                    <input id="type-4" class="radio-inline__input" type="radio" name="type" value="交通費" />
                     <label class="radio-inline__label" for="type-4">
                         <i class="fas fa-car fa-lg"></i><br>
                         交通費
@@ -88,37 +88,37 @@
                         <i class="fas fa-wifi fa-lg"></i><br>
                         通信費
                     </label>
-                    <input id="type-6" class="radio-inline__input" type="radio" name="type" value="交際費"/>
+                    <input id="type-6" class="radio-inline__input" type="radio" name="type" value="交際費" />
                     <label class="radio-inline__label" for="type-6">
                         <i class="fas fa-handshake fa-lg"></i><br>
                         交際費
                     </label>
-                    <input id="type-7" class="radio-inline__input" type="radio" name="type" value="趣味"/>
+                    <input id="type-7" class="radio-inline__input" type="radio" name="type" value="趣味" />
                     <label class="radio-inline__label" for="type-7">
                         <i class="fas fa-star fa-lg"></i><br>
                         趣味
                     </label>
-                    <input id="type-8" class="radio-inline__input" type="radio" name="type" value="貯蓄"/>
+                    <input id="type-8" class="radio-inline__input" type="radio" name="type" value="貯蓄" />
                     <label class="radio-inline__label" for="type-8">
                         <i class="fas fa-yen-sign fa-lg"></i><br>
                         貯蓄
                     </label>
-                    <input id="type-9" class="radio-inline__input" type="radio" name="type" value="被服費"/>
+                    <input id="type-9" class="radio-inline__input" type="radio" name="type" value="被服費" />
                     <label class="radio-inline__label" for="type-9">
                         <i class="fas fa-tshirt fa-lg"></i><br>
                         被服費
                     </label>
-                    <input id="type-10" class="radio-inline__input" type="radio" name="type" value="美容費"/>
+                    <input id="type-10" class="radio-inline__input" type="radio" name="type" value="美容費" />
                     <label class="radio-inline__label" for="type-10">
                         <i class="fas fa-cut fa-lg"></i><br>
                         美容費
                     </label>
-                    <input id="type-11" class="radio-inline__input" type="radio" name="type" value="医療費"/>
+                    <input id="type-11" class="radio-inline__input" type="radio" name="type" value="医療費" />
                     <label class="radio-inline__label" for="type-11">
                         <i class="fas fa-hospital-alt fa-lg"></i><br>
                         医療費
                     </label>
-                    <input id="type-12" class="radio-inline__input" type="radio" name="type" value="その他"/>
+                    <input id="type-12" class="radio-inline__input" type="radio" name="type" value="その他" />
                     <label class="radio-inline__label" for="type-12">
                         <i class="fas fa-comment-dots fa-lg"></i><br>
                         その他
@@ -180,7 +180,7 @@
 
     <div class="access-box">
         <div class="detail-wrapper">
-            <a href="{{route('kakeibo.details')}}">
+            <a href="{{route('kakeibo.details', ['date' => $date])}}">
                 <button class="btn btn-block btn-success">詳細一覧</button>
             </a>
         </div>
