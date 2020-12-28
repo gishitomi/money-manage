@@ -23,7 +23,7 @@
             <p id="right-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date))+2, 0, 0))}}月</p>
         </div>
     </div>
-    @if($budget)
+
     <div class="graph" id="app">
         <!--描画領域 -->
         <canvas id="mycanvas"></canvas>
@@ -34,19 +34,25 @@
     </div>
     <!-- ドロワーメニュー -->
     <div id="spend-drawer">
-        <form action="{{route('kakeibo.index', ['date' => $budget->date])}}" method="POST">
+        <form action="{{route('kakeibo.index', ['date' => $date])}}" method="POST">
             @csrf
             <h2 class="drawer-title">支出</h2>
             <span class="back-btn" id="spend-back">
-                <i class="fas fa-times fa-3x"></i>
+                <i class="fas fa-times fa-2x"></i>
             </span>
             <div class="drawer-menu">
                 <div class="date-box">
-                    <span id="spend-month-left"><i class="fas fa-long-arrow-alt-left fa-lg"></i></span>
-                    <span id="spend-date-left"><i class="fas fa-long-arrow-alt-left fa-lg"></i></span>
+                    <div id="spend-month-left"><i class="fas fa-angle-double-left fa-2x icon-color"></i></div>
+                    <div id="spend-date-left">
+                        <i class="fas fa-chevron-left fa-2x icon-color"></i>
+                        <p>前日</p>
+                    </div>
                     <p id="spend-date"></p>
-                    <span id="spend-date-right"><i class="fas fa-long-arrow-alt-right fa-lg"></i></span>
-                    <span id="spend-month-right"><i class="fas fa-long-arrow-alt-right fa-lg"></i></span>
+                    <div id="spend-date-right">
+                        <i class="fas fa-chevron-right fa-2x icon-color"></i>
+                        <p>翌日</p>
+                    </div>
+                    <div id="spend-month-right"><i class="fas fa-angle-double-right fa-2x icon-color"></i></div>
                 </div>
                 @if($errors->any())
                 <div class="error-msg-box">
@@ -132,17 +138,23 @@
         </form>
     </div>
     <div id="incom-drawer">
-        <form action="{{route('kakeibo.index', ['date' => $budget->date])}}" method="POST">
+        <form action="{{route('kakeibo.index', ['date' => $date])}}" method="POST">
             @csrf
             <h2 class="drawer-title incom">収入</h2>
             <span class="back-btn" id="incom-back">
-                <i class="fas fa-times fa-3x"></i>
+                <i class="fas fa-times fa-2x"></i>
             </span>
             <div class="drawer-menu">
                 <div class="date-box">
-                    <span id="incom-date-left"><i class="fas fa-long-arrow-alt-left fa-lg"></i></span>
+                    <div id="incom-date-left">
+                    <i class="fas fa-chevron-left fa-2x icon-color"></i>
+                    <p>前日</p>
+                    </div>
                     <p id="incom-date"></p>
-                    <span id="incom-date-right"><i class="fas fa-long-arrow-alt-right fa-lg"></i></span>
+                    <div id="incom-date-right">
+                        <i class="fas fa-chevron-right fa-2x icon-color"></i>
+                        <p>翌日</p>
+                    </div>
                 </div>
                 <input type="hidden" id="db-incom-date" name="date">
                 <input type="hidden" name="money_type" value="2">
@@ -188,8 +200,9 @@
             <i class="fas fa-chart-line fa-lg"></i>
         </button>
     </div>
-    @else
-    <div class="kakeibo-img">
+
+
+    <!-- <div class="kakeibo-img">
         <div class="not-exist-msg">
             <p>データは存在しません。<br>支出予算額から入力してください。</p>
             <div class="not-exist-btn">
@@ -198,8 +211,8 @@
                 </a>
             </div>
         </div>
-    </div>
-    @endif
+    </div> -->
+  
 </div>
 
 

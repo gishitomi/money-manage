@@ -242,11 +242,15 @@ form {
 .date-box {
     display: flex;
     justify-content: space-between;
-    width: 50%;
+    width: 80%;
 }
 
-.date-box span {
+.date-box div {
     cursor: pointer;
+}
+
+.date-box div p {
+    font-size: 15px;
 }
 
 
