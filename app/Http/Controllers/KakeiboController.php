@@ -101,7 +101,7 @@ class KakeiboController extends Controller
         $spendDetails = $dateDetails->where('money_type', 1)->get();
 
         // 収入金額のみ表示
-        $incomDetails = $dateDetails->where('money_type', 2)->get();
+        $incomDetails = $totalIncomDate->get();
 
         return view('kakeibo.details', [
             'budgets' => $budgets,

@@ -2,11 +2,20 @@
     font-size: 25px;
     font-weight: 800;
     border-bottom: 2px solid whitesmoke;
+    text-align: center;
+}
+
+.date-title a:hover {
+    text-decoration: none;
+}
+
+.month-txt {
+    font-size: 15px;
+    color: gray;
 }
 
 .kakeibo-table {
     width: 50%;
-    /* margin: 0 auto; */
 }
 
 .table-row {
@@ -42,6 +51,15 @@
 
 .border {
     margin-top: 10px;
-    width: 50%;
+    width: 100%;
     border-bottom: 2px solid gray;
+}
+
+.money-table {
+    display: flex;
+    justify-content: space-between;
+}
+
+.kakeibo-table table {
+    width: 100%;
 }
