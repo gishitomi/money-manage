@@ -38,7 +38,7 @@ class KakeiboController extends Controller
         $allTotallIncom = $allTotalIncomDate->sum('money');
 
         // ログインしてるユーザー名を取得
-        $user_name = Auth::user()->name;
+        $userName = Auth::user()->name;
 
         return view('kakeibo.index', [
             'budgets' => $budgets,
@@ -49,13 +49,13 @@ class KakeiboController extends Controller
             'totalSpend' => $totalSpend,
             'totalIncom' => $totalIncom,
             'allTotalIncom' => $allTotallIncom,
-            'user_name' => $user_name,
+            'userName' => $userName,
         ]);
     }
     public function create(string $date, CreateKakeibo $request)
     {
         $budgets = Auth::user()->budgets();
-        $budget = $budgets->whereDate('date', $date)->first();
+        $budget = $budgets->whereDate('date', 'like', $date . '%')->first();
         $kakeibo = new Kakeibo();
         $kakeibo->type = $request->type;
         $kakeibo->date = $request->date;
@@ -64,7 +64,7 @@ class KakeiboController extends Controller
         $kakeibo->description = $request->description;
         Auth::user()->kakeibos()->save($kakeibo);
 
-        return redirect(route('kakeibo.index', ['date' => $budget->date]));
+        return redirect(route('kakeibo.index', ['date' => $date]));
     }
     public function showDetails(string $date)
     {     
@@ -90,11 +90,19 @@ class KakeiboController extends Controller
         $totalIncom = $totalIncomDate->sum('money');
 
         $allTotalIncomDate = Kakeibo::where('money_type', 2);
+
         $allTotallIncom = $allTotalIncomDate->sum('money');
         // ログインしてるユーザー名を取得
-        $user_name = Auth::user()->name;
+        $userName = Auth::user()->name;
         $details = Auth::user()->kakeibos();
-        $date_details = $details->whereDate('date', 'like', $date . '%')->get();
+        $dateDetails = $details->whereDate('date', 'like', $date . '%');
+
+        // 支出金額のみ表示
+        $spendDetails = $dateDetails->where('money_type', 1)->get();
+
+        // 収入金額のみ表示
+        $incomDetails = $dateDetails->where('money_type', 2)->get();
+
         return view('kakeibo.details', [
             'budgets' => $budgets,
             'budget' => $budget,
@@ -104,8 +112,9 @@ class KakeiboController extends Controller
             'totalSpend' => $totalSpend,
             'totalIncom' => $totalIncom,
             'allTotalIncom' => $allTotallIncom,
-            'user_name' => $user_name,
-            'details' => $date_details,
+            'userName' => $userName,
+            'spendDetails' => $spendDetails,
+            'incomDetails' => $incomDetails,
         ]);
     }
 }

@@ -39,3 +39,9 @@
     width: 40px;
     height: 40px;
 }
+
+.border {
+    margin-top: 10px;
+    width: 50%;
+    border-bottom: 2px solid gray;
+}

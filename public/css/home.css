@@ -39,7 +39,7 @@
 .btn-circle-flat {
     display: inline-block;
     text-decoration: none;
-    background: #87befd;
+    background: #03a003;
     color: #FFF;
     width: 120px;
     height: 120px;
@@ -51,7 +51,7 @@
 }
 
 .btn-circle-flat:hover {
-    background: #668ad8;
+    background: #47ca2c;
     text-decoration: none;
     color: whitesmoke;
 }

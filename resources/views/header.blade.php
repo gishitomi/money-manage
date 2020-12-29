@@ -20,7 +20,7 @@
                 </a>
                 <div class="header-right">
                     @if(Auth::check())
-                    <p>ようこそ、{{$user_name}}さん</p>
+                    <p>ようこそ、{{$userName}}さん</p>
                     <div class="auth-btns">
                         <form action="{{route('logout')}}" method="POST">
                             @csrf

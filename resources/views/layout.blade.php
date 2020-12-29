@@ -19,7 +19,7 @@
                     <h1>MoneyManageApp</h1>
                 </a>
                 <div class="header-right">
-                    <p>ようこそ、{{$user_name}}さん</p>
+                    <p>ようこそ、{{$userName}}さん</p>
                     <div class="auth-btns">
                         <form action="{{route('logout')}}" method="POST">
                             @csrf
@@ -33,24 +33,31 @@
     <div class="main-contents container-fluid">
         <div class="row main-contents-row">
             <div class="sidebar col-md-2 d-md-flex d-none ">
-                @if(isset($budget))
                 <div class="budget-box">
                     <p class="text-sm" id="budget-month">{{date('m月', strtotime($date))}}の設定予算</p>
+                    @if(isset($budget))
                     <p>{{$budget->money}}円</p>
+                    @else
+                    <p>-----円</p>
+                    @endif
                 </div>
                 <div class="remaining">
+                    @if(isset($budget))
                     @if($budget->money - $totalSpend > 0)
                     <p>残り<br><span style="font-weight: 900;">{{$budget->money - $totalSpend}}</span>円<br>使用できます。</p>
                     @elseif($budget->money - $totalSpend < 0)
                     <p>設定金額より<br><span style="font-weight: 900;">{{($budget->money - $totalSpend) * -1}}</span>円<br>オーバーしています。</p>
+                    @endif
+
                     @else
+                    <p>予算額が<br>設定されていません。</p>
+                    <a href="{{route('budgets.edit', ['date' => $date])}}">
+                        予算額を設定する
+                    </a>
                     @endif
                 </div>
-                @else
-                <p>存在しないよ</p>
-                @endif
                 <div class="total-money">
-                    <p>累計収入金額</p>
+                    <p>これまでの収入金額</p>
                     <p><span style="font-weight: 900;">{{$allTotalIncom}}</span>円</p>
                 </div>
                 <div class="budget-edit-btn">

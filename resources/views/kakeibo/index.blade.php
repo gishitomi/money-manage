@@ -40,6 +40,7 @@
             <span class="back-btn" id="spend-back">
                 <i class="fas fa-times fa-2x"></i>
             </span>
+            
             <div class="drawer-menu">
                 <div class="date-box">
                     <div id="spend-month-left"><i class="fas fa-angle-double-left fa-2x icon-color"></i></div>
@@ -200,19 +201,6 @@
             <i class="fas fa-chart-line fa-lg"></i>
         </button>
     </div>
-
-
-    <!-- <div class="kakeibo-img">
-        <div class="not-exist-msg">
-            <p>データは存在しません。<br>支出予算額から入力してください。</p>
-            <div class="not-exist-btn">
-                <a href="{{route('budgets.edit', ['date' => $date])}}">
-                    <button class="btn btn-block btn-success">予算を設定する</button>
-                </a>
-            </div>
-        </div>
-    </div> -->
-  
 </div>
 
 
