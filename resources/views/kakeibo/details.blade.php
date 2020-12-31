@@ -78,12 +78,3 @@
         </div>
 </dic>
 @endsection
-
-@section('script')
-<script>
-    flatpickr(document.getElementById('detail-date'), {
-        locale: 'ja',
-        dateFormat: "Y/m/d",
-    })
-</script>
-@endsection

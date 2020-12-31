@@ -24,10 +24,16 @@
         </div>
     </div>
 
+    @if($totalSpend !== 0)
     <div class="graph" id="app">
         <!--描画領域 -->
         <canvas id="mycanvas"></canvas>
     </div>
+    @else
+    <div class="non-spend-msg">
+        <p>{{date('Y年m月', strtotime($date))}}の<br>支出金額はありません。</p>
+    </div>
+    @endif
     <div class="create-box">
         <span class="btn-circle-flat spend-color" id="spend-btn">支出</span>
         <span id="incom-btn" class="btn-circle-flat">収入</span>
@@ -40,7 +46,7 @@
             <span class="back-btn" id="spend-back">
                 <i class="fas fa-times fa-2x"></i>
             </span>
-            
+
             <div class="drawer-menu">
                 <div class="date-box">
                     <div id="spend-month-left"><i class="fas fa-angle-double-left fa-2x icon-color"></i></div>
@@ -148,8 +154,8 @@
             <div class="drawer-menu">
                 <div class="date-box">
                     <div id="incom-date-left">
-                    <i class="fas fa-chevron-left fa-2x icon-color"></i>
-                    <p>前日</p>
+                        <i class="fas fa-chevron-left fa-2x icon-color"></i>
+                        <p>前日</p>
                     </div>
                     <p id="incom-date"></p>
                     <div id="incom-date-right">
