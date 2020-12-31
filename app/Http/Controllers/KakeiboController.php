@@ -28,7 +28,7 @@ class KakeiboController extends Controller
         $totalSpend = $totalSpendDate->sum('money');
 
         // 収入金額のしぼりこみ
-        $totalIncomDate = Kakeibo::query();
+        $totalIncomDate = Auth::user()->kakeibos();
         $totalIncomDate->whereBetween('date', [$firstDate, $lastDate]);
         $totalIncomDate->where('money_type', 2);
         // 取得した収入金額の合計を算出
@@ -83,7 +83,7 @@ class KakeiboController extends Controller
         $totalSpend = $totalSpendDate->sum('money');
 
         // 収入金額のしぼりこみ
-        $totalIncomDate = Kakeibo::query();
+        $totalIncomDate = Auth::user()->kakeibos();
         $totalIncomDate->whereBetween('date', [$firstDate, $lastDate]);
         $totalIncomDate->where('money_type', 2);
         // 取得した収入金額の合計を算出

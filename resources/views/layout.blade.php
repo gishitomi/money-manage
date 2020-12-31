@@ -45,16 +45,15 @@
                     @if(isset($budget))
                     @if($budget->money - $totalSpend > 0)
                     <p>残り<br><span style="font-weight: 900;">{{$budget->money - $totalSpend}}</span>円<br>使用できます。</p>
-                    @elseif($budget->money - $totalSpend < 0)
-                    <p>設定金額より<br><span style="font-weight: 900;">{{($budget->money - $totalSpend) * -1}}</span>円<br>オーバーしています。</p>
-                    @endif
+                    @elseif($budget->money - $totalSpend < 0) <p>設定金額より<br><span style="font-weight: 900;">{{($budget->money - $totalSpend) * -1}}</span>円<br>オーバーしています。</p>
+                        @endif
 
-                    @else
-                    <p>予算額が<br>設定されていません。</p>
-                    <a href="{{route('budgets.edit', ['date' => $date])}}">
-                        予算額を設定する
-                    </a>
-                    @endif
+                        @else
+                        <p>予算額が<br>設定されていません。</p>
+                        <a href="{{route('budgets.edit', ['date' => $date])}}">
+                            予算額を設定する
+                        </a>
+                        @endif
                 </div>
                 <div class="total-money">
                     <p>これまでの収入金額</p>
@@ -80,6 +79,10 @@
     </div>
     <!-- オーバーレイ -->
     <div id="overlay"></div>
+    <!-- flatpickrスクリプト -->
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <!-- 日本語化のための追加スクリプト -->
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
     @yield('script')
 </body>
 

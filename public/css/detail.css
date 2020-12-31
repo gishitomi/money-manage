@@ -2,7 +2,8 @@
     font-size: 25px;
     font-weight: 800;
     border-bottom: 2px solid whitesmoke;
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .date-title a:hover {

@@ -1,22 +1,24 @@
 @extends('layout')
 @section('style')
 <link rel="stylesheet" href="{{asset('css/detail.css')}}">
+<!-- flatpickrのスタイルシート -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
 
 @section('content')
 <h1 class="home-index">詳細一覧</h1>
 <dic class="container">
-    <h2 class="date-title">
+    <div class="date-title">
         <a href="{{route('kakeibo.details', ['date' => $past])}}">
             <span class="month-txt">前月</span>
-        <i class="fas fa-chevron-left icon-color"></i>
+            <i class="fas fa-chevron-left icon-color"></i>
         </a>
-        {{date('Y年m月', strtotime($date))}}
+        <h3 id="detail-date">{{date('Y年m月', strtotime($date))}}</h3>
         <a href="{{route('kakeibo.details', ['date' => $future])}}">
-        <i class="fas fa-chevron-right icon-color"></i>
-        <span class="month-txt">翌月</span>
+            <i class="fas fa-chevron-right icon-color"></i>
+            <span class="month-txt">翌月</span>
         </a>
-    </h2>
+    </div>
     <div class="money-table">
         <div class="kakeibo-table">
             <table>
@@ -37,10 +39,14 @@
                 </tr>
                 @endforeach
             </table>
+            @if($totalSpend !== 0)
             <div class="border"></div>
             <div class="total">
                 <p>計: {{$totalSpend}}円</p>
             </div>
+            @else
+            <p>{{date('Y年m月', strtotime($date))}}の支出金額はありません。</p>
+            @endif
         </div>
         <div class="kakeibo-table">
             <table>
@@ -61,10 +67,23 @@
                 </tr>
                 @endforeach
             </table>
+            @if($totalIncom !== 0)
             <div class="border"></div>
             <div class="total">
                 <p>計: {{$totalIncom}}円</p>
+            </div>
+            @else
+            <p>{{date('Y年m月', strtotime($date))}}の収入金額はありません。</p>
+            @endif
         </div>
-    </div>
 </dic>
+@endsection
+
+@section('script')
+<script>
+    flatpickr(document.getElementById('detail-date'), {
+        locale: 'ja',
+        dateFormat: "Y/m/d",
+    })
+</script>
 @endsection
