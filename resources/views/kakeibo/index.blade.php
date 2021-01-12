@@ -16,6 +16,11 @@
             </a>
             <p id="left-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date)), 0, 0))}}月</p>
         </div>
+        @if(isset($budget))
+        <h1 class="home-index">{{date('Y年m月', strtotime($budget->date))}}</h1>
+        @else
+        <h1 class="home-index">{{date('Y年m月', strtotime($date))}}</h1>
+        @endif
         <div class="arrow-right">
             <a href="{{route('kakeibo.index', ['date' => $future])}}" id="right-month-btn">
                 <i class="fas fa-chevron-right fa-3x icon-color"></i>
@@ -203,9 +208,9 @@
                 <button class="btn btn-block btn-success">詳細一覧</button>
             </a>
         </div>
-        <button class="btn btn-success">
+            <a href="{{route('kakeibo.statistics', ['date' => $date])}}" class="btn-success btn">
             <i class="fas fa-chart-line fa-lg"></i>
-        </button>
+            </a>
     </div>
 </div>
 

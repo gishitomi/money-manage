@@ -32,6 +32,10 @@ Route::get('/kakeibo/details/{date}', 'App\Http\Controllers\KakeiboController@sh
 Route::get('/budgets/edit/{date?}', 'App\Http\Controllers\BudgetController@showEditForm')->name('budgets.edit');
 Route::post('/budgets/edit/{date?}', 'App\Http\Controllers\BudgetController@edit');
 
+// 家計簿統計画面
+Route::get('/kakeibo/statistics/{date?}', 'App\Http\Controllers\KakeiboController@showStatisticsForm')->name('kakeibo.statistics');
+Route::post('/kakeibo/statistics/{date?}', 'App\Http\Controllers\KakeiboController@statistics');
+
 });
 
 // Chart.jsでデータを渡すためのAjax用URL

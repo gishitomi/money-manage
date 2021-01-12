@@ -14,11 +14,11 @@ class BudgetController extends Controller
         $budgets = Auth::user()->budgets();
         $budget = $budgets->whereDate('date', 'like', $date . '%')->first();
         // ログインしてるユーザー名を取得
-        $user_name = Auth::user()->name;
+        $userName = Auth::user()->name;
         return view('budgets.edit', [
             'date' => $date,
             'budget' => $budget,
-            'user_name' => $user_name,
+            'userName' => $userName,
         ]);
     }
     public function edit(string $date, CreateBudgets $request)

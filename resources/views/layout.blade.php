@@ -38,7 +38,7 @@
                     @if(isset($budget))
                     <p>{{$budget->money}}円</p>
                     @else
-                    <p>-----円</p>
+                    <p>----- 円</p>
                     @endif
                 </div>
                 <div class="remaining">

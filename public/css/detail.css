@@ -4,10 +4,15 @@
     border-bottom: 2px solid whitesmoke;
     display: flex;
     justify-content: center;
+    margin-bottom: 40px;
 }
 
 .date-title a:hover {
     text-decoration: none;
+}
+
+#detail-date {
+    margin: 0 20px;
 }
 
 .month-txt {
