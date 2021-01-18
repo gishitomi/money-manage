@@ -40,7 +40,7 @@
                             scales: {
                                 yAxes: [{
                                     ticks: {
-                                        //beginAtZero: true,
+                                        beginAtZero: true,
                                         userCallback: function(tick) {
                                             return tick.toString() + '円';
                                         },

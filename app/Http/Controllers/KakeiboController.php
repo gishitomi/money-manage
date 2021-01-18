@@ -98,10 +98,10 @@ class KakeiboController extends Controller
         $dateDetails = $details->whereDate('date', 'like', $date . '%');
 
         // 支出金額のみ表示
-        $spendDetails = $dateDetails->where('money_type', 1)->get();
+        $spendDetails = $dateDetails->where('money_type', 1)->orderBy('date', 'ASC')->get();
 
         // 収入金額のみ表示
-        $incomDetails = $totalIncomDate->get();
+        $incomDetails = $totalIncomDate->orderBy('date', 'ASC')->get();
 
         return view('kakeibo.details', [
             'budgets' => $budgets,

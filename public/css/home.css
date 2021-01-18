@@ -184,6 +184,10 @@ form {
     margin-right: 20px;
 }
 
+.detail-wrapper a:hover {
+    text-decoration: none;
+}
+
 
 /* ドロワーメニュー */
 
