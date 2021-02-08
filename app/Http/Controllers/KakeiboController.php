@@ -9,10 +9,15 @@ use App\Models\Budget;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
+use function PHPUnit\Framework\isNull;
+
 class KakeiboController extends Controller
 {
     public function index(string $date)
     {
+        // if(isnull($date)) {
+        //     abort(404);
+        // }
         $budgets = Auth::user()->budgets();
         $budget = $budgets->whereDate('date', 'like', $date . '%')->first();
         $past = date('Y-m', mktime(0, 0, 0, date('m', strtotime($date)), 0, date('Y', strtotime($date))));
