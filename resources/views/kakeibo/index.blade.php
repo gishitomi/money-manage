@@ -12,7 +12,8 @@
     <div class="date-arrow">
         <div class="arrow-left">
             <a href="{{route('kakeibo.index', ['date' => $past])}}" id="left-month-btn">
-                <i class="fas fa-chevron-left fa-3x icon-color"></i>
+                <i class="fas fa-chevron-left fa-3x icon-color pc"></i>
+                <i class="fas fa-chevron-left fa-2x icon-color sp"></i>
             </a>
             <p id="left-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date)), 0, 0))}}月</p>
         </div>
@@ -23,7 +24,8 @@
         @endif
         <div class="arrow-right">
             <a href="{{route('kakeibo.index', ['date' => $future])}}" id="right-month-btn">
-                <i class="fas fa-chevron-right fa-3x icon-color"></i>
+                <i class="fas fa-chevron-right fa-3x icon-color pc"></i>
+                <i class="fas fa-chevron-right fa-2x icon-color sp"></i>
             </a>
             <p id="right-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date))+2, 0, 0))}}月</p>
         </div>
@@ -194,13 +196,10 @@
         </form>
     </div>
 
-
-
     <div class="incom-box">
         <p>今月の収入:　<span>{{$totalIncom}}</span>円</p>
         <p>今月の支出:　<span>{{$totalSpend}}</span>円</p>
     </div>
-
 
     <div class="access-box">
         <div class="detail-wrapper">
@@ -208,12 +207,11 @@
                 <button class="btn btn-block btn-success">詳細一覧</button>
             </a>
         </div>
-            <a href="{{route('kakeibo.statistics', ['date' => $date])}}" class="btn-success btn">
+        <a href="{{route('kakeibo.statistics', ['date' => $date])}}" class="btn-success btn">
             <i class="fas fa-chart-line fa-lg"></i>
-            </a>
+        </a>
     </div>
 </div>
-
 
 @endsection
 

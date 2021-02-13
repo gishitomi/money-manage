@@ -320,3 +320,105 @@ form {
     width: 60%;
     height: 50px;
 }
+
+@media screen and (max-width:960px) {
+    #left-month,
+    #right-month {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .home {
+        overflow: scroll;
+    }
+    .create-box {
+        position: absolute;
+        top: 60%;
+        right: 10%;
+        display: flex;
+        flex-direction: row;
+    }
+    .create-box span {
+        margin: 0 50px;
+    }
+    .incom-box {
+        top: 80%;
+    }
+    .graph {
+        width: 100%;
+    }
+    .non-spend-msg p {
+        margin-bottom: 70px;
+    }
+    #spend-drawer,
+    #incom-drawer {
+        width: 400px;
+        overflow: scroll;
+    }
+    #spend-drawer .drawer-menu {
+        height: 100%;
+    }
+    .spend-type-box {
+        width: 75%;
+    }
+}
+
+@media screen and (max-width:499PX) {
+    .home-index {
+        font-size: 20px;
+    }
+    .create-box {
+        right: 0;
+    }
+    .btn-circle-flat {
+        color: #FFF;
+        width: 160px;
+        height: 60px;
+        line-height: 4;
+        border-radius: 4px;
+        text-align: center;
+        overflow: hidden;
+        transition: .4s;
+    }
+    .create-box span {
+        margin: 0 35px;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    .create-box {
+        right: 10%;
+    }
+    .create-box span {
+        margin: 0 10px;
+    }
+    .btn-circle-flat {
+        width: 120px;
+    }
+    .incom-box {
+        top: 75%;
+    }
+    .access-box {
+        width: 90%;
+    }
+    .pc {
+        display: none;
+    }
+    .sp {
+        display: block;
+    }
+    .non-spend-msg p {
+        margin-bottom: 120px;
+    }
+    #spend-drawer,
+    #incom-drawer {
+        width: 375px;
+    }
+    #spend-drawer .drawer-menu {
+        height: 120%;
+    }
+    .spend-type-box {
+        width: 80%;
+    }
+}

@@ -16,42 +16,62 @@
             <div class="container">
                 <div class="message">
                     <h1>タスク管理を人生にたとえたら、<br>大げさでしょうか？</h1>
-                    <h2>家計簿アプリ「Money Manage App」</h2>
+                    <h2>家計簿アプリ <br class="sp-br">「Money Manage App」</h2>
                 </div>
             </div>
             <div class="container">
                 <form action="{{route('login')}}" method="post" class="form-box">
                     @csrf
                     <div id="form">
-                    @if($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach($errors->all() as $message)
+                        @if($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach($errors->all() as $message)
                             <p>{{$message}}</p>
-                        @endforeach
-                    </div>
-                    @endif
-                        <p>メールアドレス</p>
-                        <p class="mail"> <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus></p>
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <p>パスワード</p>
-                        <p class="pass"> <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"></p>
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                        <p class="check"><input type="checkbox" name="checkbox" />パスワードを保存</p>
-                        <div class="text-center">
-                            <a href="{{ route('password.request') }}">パスワードを忘れてしまった場合はこちら</a>
+                            @endforeach
+                        </div>
+                        @endif
+                        <div class="input-field">
+                            <div class="email-field">
+                                <p>メールアドレス</p>
+                                <p class="mail"> <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus></p>
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="pass-field">
+                                <p>パスワード</p>
+                                <p class="pass"> <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password"></p>
+                                @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                                <p class="check"><input type="checkbox" name="checkbox" />パスワードを保存</p>
+                                <div class="text-center forget-pass">
+                                    <a href="{{ route('password.request') }}">パスワードを忘れてしまった場合はこちら</a>
+                                </div>
+                            </div>
                         </div>
 
 
                         <div class="login-box">
                             <button type="submit" class="btn btn-primary login-btn">ログイン</button>
+                        </div>
+                        <div class="tablet-btns">
+                            <div class="tablet-registerbtn">
+                                <a href="{{route('register')}}">
+                                    <button type="button" class="btn btn-block btn-success">会員登録はこちら
+                                    </button>
+                                </a>
+                            </div>
+                            <div class="tablet-loginbtn">
+                                <button type="submit" class="btn btn-primary btn-block">ログイン</button>
+                                <div class="text-center guest-msg">
+                                    <a href="{{route('guest.login')}}">ゲストログインはこちら</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="login-box new">

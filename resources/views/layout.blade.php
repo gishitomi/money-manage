@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('css/breakpoint/tablet.css')}}" media="screen and (max-width:1024px)">
-    <link rel="stylesheet" href="{{asset('css/breakpoint/sp.css')}}" media="screen and (max-width:599px)">
     @yield('style')
 </head>
 
@@ -36,9 +34,9 @@
         <div class="row main-contents-row">
             <div class="sidebar col-md-2 d-md-flex d-none ">
                 <div class="budget-box">
-                    <p class="text-sm" id="budget-month">{{date('m月', strtotime($date))}}の設定予算</p>
+                    <p class="text-sm" id="budget-month">{{date('m月', strtotime($date))}}の<br class="br-tablet">設定予算</p>
                     @if(isset($budget))
-                    <p>{{$budget->money}}円</p>
+                    <p class="amount">{{$budget->money}}円</p>
                     @else
                     <p>----- 円</p>
                     @endif
@@ -58,17 +56,17 @@
                         @endif
                 </div>
                 <div class="total-money">
-                    <p>これまでの収入金額</p>
+                    <p>これまでの<br class="br-tablet">収入金額</p>
                     <p><span style="font-weight: 900;">{{$allTotalIncom}}</span>円</p>
                 </div>
                 <div class="budget-edit-btn">
                     @if($budget)
                     <a href="{{route('budgets.edit', ['date' => $date])}}">
-                        <button class="btn btn-success btn-block">予算を変更する</button>
+                        <button class="btn btn-success btn-block">予算を<br class="br-tablet">変更する</button>
                     </a>
                     @else
                     <a href="{{route('budgets.edit', ['date' => $date])}}">
-                        <button class="btn btn-block btn-success">予算を設定する</button>
+                        <button class="btn btn-block btn-success">予算を<br class="br-tablet">設定する</button>
                     </a>
                     @endif
                 </div>

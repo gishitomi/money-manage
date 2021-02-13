@@ -38,6 +38,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    // ゲストログイン
     public function guestLogin() {
         $email = 'test@test.com';
         $password = '1234abcd';

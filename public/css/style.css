@@ -81,6 +81,36 @@ body {
     color: green;
 }
 
+.amount {
+    font-weight: bold;
+}
+
 p {
     margin: 0;
+}
+
+.br-tablet {
+    display: none;
+}
+
+.sp {
+    display: none;
+}
+
+@media screen and (max-width:960px) {
+    .home-index {
+        font-size: 27px;
+    }
+    .br-tablet {
+        display: block;
+    }
+    .sidebar p {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .header-title h1 {
+        font-size: 25px;
+    }
 }
