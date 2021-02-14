@@ -56,17 +56,27 @@
 
             <div class="drawer-menu">
                 <div class="date-box">
-                    <div id="spend-month-left"><i class="fas fa-angle-double-left fa-2x icon-color"></i></div>
+                    <div id="spend-month-left">
+                        <i class="fas fa-angle-double-left fa-2x icon-color pc"></i>
+                        <i class="fas fa-angle-double-left fa-lg icon-color sp"></i>
+                        <p>前月</p>
+                    </div>
                     <div id="spend-date-left">
-                        <i class="fas fa-chevron-left fa-2x icon-color"></i>
+                        <i class="fas fa-chevron-left fa-2x icon-color pc"></i>
+                        <i class="fas fa-chevron-left fa-lg icon-color sp"></i>
                         <p>前日</p>
                     </div>
                     <p id="spend-date"></p>
                     <div id="spend-date-right">
-                        <i class="fas fa-chevron-right fa-2x icon-color"></i>
+                        <i class="fas fa-chevron-right fa-2x icon-color pc"></i>
+                        <i class="fas fa-chevron-right fa-lg icon-color sp"></i>
                         <p>翌日</p>
                     </div>
-                    <div id="spend-month-right"><i class="fas fa-angle-double-right fa-2x icon-color"></i></div>
+                    <div id="spend-month-right">
+                        <i class="fas fa-angle-double-right fa-2x icon-color pc"></i>
+                        <i class="fas fa-angle-double-right fa-lg icon-color sp"></i>
+                        <p>翌月</p>
+                    </div>
                 </div>
                 @if($errors->any())
                 <div class="error-msg-box">
@@ -80,7 +90,8 @@
                 <h3>支出金額を入力</h3>
                 <p><input type="number" name="money" id="money">　円</p>
                 <div class="memo-box">
-                    <textarea name="description" id="description" cols="40" rows="5"></textarea>
+                    <textarea name="description" id="description" cols="40" rows="5" class="pc"></textarea>
+                    <textarea name="description" id="description" cols="30" rows="5" class="sp"></textarea>
                 </div>
                 <div class="spend-type-box">
                     <input id="type-1" class="radio-inline__input" type="radio" name="type" value="食費" />
@@ -160,14 +171,26 @@
             </span>
             <div class="drawer-menu">
                 <div class="date-box">
+                    <div id="incom-month-left">
+                        <i class="fas fa-angle-double-left fa-2x icon-color pc"></i>
+                        <i class="fas fa-angle-double-left fa-lg icon-color sp"></i>
+                        <p>前月</p>
+                    </div>
                     <div id="incom-date-left">
-                        <i class="fas fa-chevron-left fa-2x icon-color"></i>
+                        <i class="fas fa-chevron-left fa-2x icon-color pc"></i>
+                        <i class="fas fa-chevron-left fa-lg icon-color sp"></i>
                         <p>前日</p>
                     </div>
                     <p id="incom-date"></p>
                     <div id="incom-date-right">
-                        <i class="fas fa-chevron-right fa-2x icon-color"></i>
+                        <i class="fas fa-chevron-right fa-2x icon-color pc"></i>
+                        <i class="fas fa-chevron-right fa-lg icon-color sp"></i>
                         <p>翌日</p>
+                    </div>
+                    <div id="incom-month-right">
+                        <i class="fas fa-angle-double-right fa-2x icon-color pc"></i>
+                        <i class="fas fa-angle-double-right fa-lg icon-color sp"></i>
+                        <p>翌月</p>
                     </div>
                 </div>
                 <input type="hidden" id="db-incom-date" name="date">
@@ -175,7 +198,8 @@
                 <h3>収入金額を入力</h3>
                 <p><input type="number" name="money" id="incom-money">　円</p>
                 <div class="memo-box">
-                    <textarea name="description" id="incom-description" cols="40" rows="5"></textarea>
+                    <textarea name="description" id="incom-description" cols="40" rows="5" class="pc"></textarea>
+                    <textarea name="description" id="incom-description" cols="30" rows="5" class="sp"></textarea>
                 </div>
                 <div class="incom-type-box">
                     <input id="type-101" class="incom_radio-inline__input" type="radio" name="type" value="給与" />

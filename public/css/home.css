@@ -421,4 +421,7 @@ form {
     .spend-type-box {
         width: 80%;
     }
+    .drawer-menu p {
+        font-size: 17px;
+    }
 }

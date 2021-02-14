@@ -103,8 +103,10 @@ window.onload = function() {
         dbIncomDate.value = year + '-' + month + '-' + date;
     })
 
+    var incomMonthLeft = document.getElementById('incom-month-left');
     var incomDateLeft = document.getElementById('incom-date-left');
     var incomDateRight = document.getElementById('incom-date-right');
+    var incomMonthRight = document.getElementById('incom-month-right');
 
     incomDateLeft.addEventListener('click', function() {
         today.setDate(today.getDate() - 1);
@@ -127,5 +129,27 @@ window.onload = function() {
         dbIncomDate.value = year + '-' + month + '-' + date;
         spendDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
         dbSpendDate.value = year + '-' + month + '-' + date;
+    })
+    incomMonthLeft.addEventListener('click', function() {
+        today.setMonth(today.getMonth() - 1);
+        year = today.getFullYear();
+        month = today.getMonth() + 1;
+        date = today.getDate();
+        day = weekDay[today.getDay()];
+        spendDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
+        dbSpendDate.value = year + '-' + month + '-' + date;
+        incomDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
+        dbIncomDate.value = year + '-' + month + '-' + date;
+    })
+    incomMonthRight.addEventListener('click', function() {
+        today.setMonth(today.getMonth() + 1);
+        year = today.getFullYear();
+        month = today.getMonth() + 1;
+        date = today.getDate();
+        day = weekDay[today.getDay()];
+        spendDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
+        dbSpendDate.value = year + '-' + month + '-' + date;
+        incomDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
+        dbIncomDate.value = year + '-' + month + '-' + date;
     })
 }

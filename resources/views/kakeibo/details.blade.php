@@ -7,7 +7,7 @@
 
 @section('content')
 <h1 class="home-index">詳細一覧</h1>
-<dic class="container">
+<div class="container">
     <div class="date-title">
         <a href="{{route('kakeibo.details', ['date' => $past])}}">
             <span class="month-txt">前月</span>

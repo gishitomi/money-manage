@@ -69,3 +69,26 @@
 .kakeibo-table table {
     width: 100%;
 }
+
+@media screen and (max-width:960px) {
+    .kakeibo-table {
+        margin: 0 20px;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .money-table {
+        flex-direction: column;
+    }
+    .kakeibo-table {
+        width: 90%;
+        margin: 50px 30px;
+    }
+}
+
+@media screen and (max-width:470px) {
+    #detail-date {
+        font-size: 18px;
+        margin: 8px;
+    }
+}
