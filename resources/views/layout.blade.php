@@ -28,7 +28,47 @@
                     </div>
                 </div>
             </div>
+            <!-- ハンバーガーメニュー -->
+            <div class="hamburger-menu">
+                <label id="hamburger" class="menu-btn"><span></span></label>
+            </div>
         </header>
+        <!-- スマホドロワーメニュー -->
+        <div class="sp-budget-menu"  id="sp-budget-menu">
+            <div class="sp-budget">
+                <p class="text-sm">{{date('m月', strtotime($date))}}の設定予算</p>
+                @if(isset($budget))
+                <p class="amount">{{$budget->money}}円</p>
+                @else
+                <p>----- 円</p>
+                @endif
+            </div>
+            <div class="sp-remaining">
+                @if(isset($budget))
+                    @if($budget->money - $totalSpend > 0)
+                    <p>残り<span style="font-weight: 900;">{{$budget->money - $totalSpend}}</span>円<br>使用できます。</p>
+                    @elseif($budget->money - $totalSpend < 0) <p>設定金額より<span style="font-weight: 900;">{{($budget->money - $totalSpend) * -1}}</span>円<br>オーバーしています。</p>
+                    @endif
+
+                @else
+                <p>予算額が<br>設定されていません。</p>
+                <a href="{{route('budgets.edit', ['date' => $date])}}">
+                    予算額を設定する
+                </a>
+                @endif
+            </div>
+            <div class="sp-budget-edit-btn">
+                @if($budget)
+                <a href="{{route('budgets.edit', ['date' => $date])}}">
+                    <button class="btn btn-success btn-block">予算を<br class="br-tablet">変更する</button>
+                </a>
+                @else
+                <a href="{{route('budgets.edit', ['date' => $date])}}">
+                    <button class="btn btn-block btn-success">予算を<br class="br-tablet">設定する</button>
+                </a>
+                @endif
+            </div>
+        </div>
     </div>
     <div class="main-contents container-fluid">
         <div class="row main-contents-row">

@@ -271,35 +271,6 @@ form {
     font-size: 15px;
 }
 
-
-/* 画面のぼかし */
-
-.kakeibo-img {
-    width: 100%;
-    height: 590px;
-    background-image: url(../img/kakeibo-img.png);
-    background-size: cover;
-    position: relative;
-    z-index: 0;
-    overflow: hidden;
-}
-
-.kakeibo-img:before {
-    content: '';
-    background: inherit;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    z-index: -1;
-}
-
 .not-exist-msg {
     width: 70%;
     height: 250px;
@@ -329,9 +300,6 @@ form {
 }
 
 @media screen and (max-width:767px) {
-    .home {
-        overflow: scroll;
-    }
     .create-box {
         position: absolute;
         top: 60%;
@@ -370,6 +338,7 @@ form {
     }
     .create-box {
         right: 0;
+        width: 100%;
     }
     .btn-circle-flat {
         color: #FFF;
@@ -387,8 +356,15 @@ form {
 }
 
 @media screen and (max-width: 376px) {
+    .home-index {
+        text-align: center;
+    }
+    .home {
+        height: 80vh;
+    }
     .create-box {
-        right: 10%;
+        width: 80%;
+        right: 11%;
     }
     .create-box span {
         margin: 0 10px;
