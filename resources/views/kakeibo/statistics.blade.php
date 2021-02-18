@@ -32,4 +32,5 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
 @include('scripts/statistics-chart')
+<script src="{{asset('js/sp-drawer.js')}}"></script>
 @endsection

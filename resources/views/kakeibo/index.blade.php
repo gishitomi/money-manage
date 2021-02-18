@@ -244,5 +244,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
 <script src="{{asset('js/drawer.js')}}"></script>
+<script src="{{asset('js/sp-drawer.js')}}"></script>
 @include('scripts/chartVueContent')
 @endsection

@@ -78,3 +78,7 @@
         </div>
 </dic>
 @endsection
+
+@section('script')
+<script src="{{asset('js/sp-drawer.js')}}"></script>
+@endsection

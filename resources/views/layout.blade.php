@@ -36,7 +36,7 @@
         <!-- スマホドロワーメニュー -->
         <div class="sp-budget-menu"  id="sp-budget-menu">
             <div class="sp-budget">
-                <p class="text-sm">{{date('m月', strtotime($date))}}の設定予算</p>
+                <p>{{date('m月', strtotime($date))}}の設定予算</p>
                 @if(isset($budget))
                 <p class="amount">{{$budget->money}}円</p>
                 @else
@@ -51,10 +51,7 @@
                     @endif
 
                 @else
-                <p>予算額が<br>設定されていません。</p>
-                <a href="{{route('budgets.edit', ['date' => $date])}}">
-                    予算額を設定する
-                </a>
+                <p>予算額が設定されていません。</p>
                 @endif
             </div>
             <div class="sp-budget-edit-btn">
