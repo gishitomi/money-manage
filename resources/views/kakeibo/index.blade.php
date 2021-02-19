@@ -47,7 +47,7 @@
     </div>
     <!-- ドロワーメニュー -->
     <div id="spend-drawer">
-        <form action="{{route('kakeibo.index', ['date' => $date])}}" method="POST">
+        <form action="{{route('kakeibo.index', ['date' => $date])}}" method="POST" onsubmit="return cancelSpendSubmit()">
             @csrf
             <h2 class="drawer-title">支出</h2>
             <span class="back-btn" id="spend-back">
@@ -157,7 +157,7 @@
                 </div>
                 <input type="hidden" name="money-type" value="1">
                 <div class="submit-btn">
-                    <button type="submit" class="btn btn-danger btn-block">決定</button>
+                    <button type="submit" id="spend-submit" class="btn btn-danger btn-block">決定</button>
                 </div>
             </div>
         </form>

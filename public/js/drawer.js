@@ -153,3 +153,18 @@ window.onload = function() {
         dbIncomDate.value = year + '-' + month + '-' + date;
     })
 }
+
+// エラーハンドリング
+var spendSubmit = document.getElementById('spend-submit');
+var money = document.getElementById('money');
+var errorSpendText = document.getElementById('error-spend-text');
+var spendType = document.getElementsByName('type');
+
+
+
+function cancelSpendSubmit() {
+    if (money.value === "") {
+        alert('支出金額を入力してください');
+        return false;
+    }
+}
