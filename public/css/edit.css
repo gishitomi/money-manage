@@ -18,3 +18,15 @@ body {
 .submit-btn {
     margin-top: 40px;
 }
+
+@media screen and (max-width:430px) {
+    .card {
+        margin-top: 80px;
+    }
+    .edit-title {
+        font-size: 20px;
+    }
+    .card h5 {
+        font-size: 18px;
+    }
+}

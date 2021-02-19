@@ -49,9 +49,9 @@
                                 </span>
                                 @enderror
                                 <p class="check"><input type="checkbox" name="checkbox" />パスワードを保存</p>
-                                <div class="text-center forget-pass">
+                                <!-- <div class="text-center forget-pass">
                                     <a href="{{ route('password.request') }}">パスワードを忘れてしまった場合はこちら</a>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
 
