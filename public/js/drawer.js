@@ -157,14 +157,43 @@ window.onload = function() {
 // エラーハンドリング
 var spendSubmit = document.getElementById('spend-submit');
 var money = document.getElementById('money');
-var errorSpendText = document.getElementById('error-spend-text');
-var spendType = document.getElementsByName('type');
-
-
+var spendType = document.spendForm.type;
 
 function cancelSpendSubmit() {
-    if (money.value === "") {
-        alert('支出金額を入力してください');
-        return false;
+    for (var i = 0; i < spendType.length; i++) {
+        if (money.value === "" && !spendType[i].checked) {
+            alert('支出金額、カテゴリを選択してください');
+            return false;
+        }
+        if (money.value === "") {
+            alert('支出金額を入力してください');
+            return false;
+        }
+        if (!spendType[i].checked) {
+            alert('カテゴリを選択してください');
+            return false;
+        }
+    }
+}
+
+
+var incomSubmit = document.getElementById('incom-submit');
+var incomMoney = document.getElementById('incom-money');
+var incomType = document.incomForm.type;
+
+function cancelIncomSubmit() {
+    for (var i = 0; i < incomType.length; i++) {
+        if (incomMoney.value === "" && !incomType[i].checked) {
+            alert('収入金額、カテゴリを選択してください');
+            return false;
+        }
+        if (incomMoney.value === "") {
+            alert('収入金額を入力してください');
+            return false;
+        }
+        if (!incomType[i].checked) {
+            alert('カテゴリを選択してください');
+            return false;
+        }
     }
 }

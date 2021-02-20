@@ -47,7 +47,7 @@
     </div>
     <!-- ドロワーメニュー -->
     <div id="spend-drawer">
-        <form action="{{route('kakeibo.index', ['date' => $date])}}" method="POST" onsubmit="return cancelSpendSubmit()">
+        <form action="{{route('kakeibo.index', ['date' => $date])}}" method="POST" onsubmit="return cancelSpendSubmit()" name="spendForm">
             @csrf
             <h2 class="drawer-title">支出</h2>
             <span class="back-btn" id="spend-back">
@@ -163,7 +163,7 @@
         </form>
     </div>
     <div id="incom-drawer">
-        <form action="{{route('kakeibo.index', ['date' => $date])}}" method="POST">
+        <form action="{{route('kakeibo.index', ['date' => $date])}}" method="POST" name="incomForm" onsubmit="return cancelIncomSubmit()">
             @csrf
             <h2 class="drawer-title incom">収入</h2>
             <span class="back-btn" id="incom-back">
@@ -193,6 +193,13 @@
                         <p>翌月</p>
                     </div>
                 </div>
+                @if($errors->any())
+                <div class="error-msg-box">
+                    @foreach($errors->all() as $message)
+                    <p>{{$message}}</p>
+                    @endforeach
+                </div>
+                @endif
                 <input type="hidden" id="db-incom-date" name="date">
                 <input type="hidden" name="money_type" value="2">
                 <h3>収入金額を入力</h3>
@@ -214,7 +221,7 @@
                     </label>
                 </div>
                 <div class="submit-btn">
-                    <button type="submit" class="btn btn-success btn-block">決定</button>
+                    <button type="submit" class="btn btn-success btn-block" id="incom-submit">決定</button>
                 </div>
             </div>
         </form>
