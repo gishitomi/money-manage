@@ -244,6 +244,9 @@ p {
 }
 
 @media screen and (max-width:430px) {
+    .main-display {
+        height: 80%;
+    }
     .header-right {
         margin: 0;
     }
