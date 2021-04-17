@@ -157,7 +157,8 @@ window.onload = function() {
 // エラーハンドリング
 var spendSubmit = document.getElementById('spend-submit');
 var money = document.getElementById('money');
-var spendType = document.spendForm.type;
+// var spendType = document.spendForm.type;
+var spendType = document.getElementsByName('type');
 
 function cancelSpendSubmit() {
     for (var i = 0; i < spendType.length; i++) {
@@ -169,8 +170,14 @@ function cancelSpendSubmit() {
             alert('支出金額を入力してください');
             return false;
         }
-        if (!spendType[i].checked) {
+        // if (!spendType[i].checked) {
+        //     alert('カテゴリを選択してください');
+        //     console.log(spendType);
+        //     return false;
+        // }
+        if (document.spendForm.type[i].checked) {
             alert('カテゴリを選択してください');
+            console.log(document.spendForm.type[i]);
             return false;
         }
     }
