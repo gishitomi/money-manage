@@ -157,12 +157,11 @@ window.onload = function() {
 // エラーハンドリング
 var spendSubmit = document.getElementById('spend-submit');
 var money = document.getElementById('money');
-// var spendType = document.spendForm.type;
-var spendType = document.getElementsByName('type');
 
 function cancelSpendSubmit() {
-    for (var i = 0; i < spendType.length; i++) {
-        if (money.value === "" && !spendType[i].checked) {
+    var flag = false;
+    for (var i = 0; i < document.spendForm.type.length - 1; i++) {
+        if (money.value === "" && !document.spendForm.type[i].checked) {
             alert('支出金額、カテゴリを選択してください');
             return false;
         }
@@ -170,27 +169,24 @@ function cancelSpendSubmit() {
             alert('支出金額を入力してください');
             return false;
         }
-        // if (!spendType[i].checked) {
-        //     alert('カテゴリを選択してください');
-        //     console.log(spendType);
-        //     return false;
-        // }
         if (document.spendForm.type[i].checked) {
-            alert('カテゴリを選択してください');
-            console.log(document.spendForm.type[i]);
-            return false;
+            flag = true;
         }
+    }
+    if (!flag) {
+        alert('カテゴリを選択してください');
+        return false;
     }
 }
 
 
 var incomSubmit = document.getElementById('incom-submit');
 var incomMoney = document.getElementById('incom-money');
-var incomType = document.incomForm.type;
 
 function cancelIncomSubmit() {
-    for (var i = 0; i < incomType.length; i++) {
-        if (incomMoney.value === "" && !incomType[i].checked) {
+    var flag = false;
+    for (var i = 0; i < document.incomForm.type.length - 1; i++) {
+        if (incomMoney.value === "" && !document.incomForm.type[i].checked) {
             alert('収入金額、カテゴリを選択してください');
             return false;
         }
@@ -198,9 +194,12 @@ function cancelIncomSubmit() {
             alert('収入金額を入力してください');
             return false;
         }
-        if (!incomType[i].checked) {
-            alert('カテゴリを選択してください');
-            return false;
+        if (document.incomForm.type[i].checked) {
+            flag = true;
         }
+    }
+    if (!flag) {
+        alert('カテゴリを選択してください');
+        return false;
     }
 }
