@@ -26,6 +26,8 @@
 
 .table-row {
     margin: 20px 0;
+    border: solid 2px whitesmoke;
+    background-color: #fff;
 }
 
 .kakeibo-table td {

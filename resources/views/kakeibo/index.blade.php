@@ -90,8 +90,7 @@
                 <h3>支出金額を入力</h3>
                 <p><input type="number" name="money" id="money">　円</p>
                 <div class="memo-box">
-                    <textarea name="description" id="description" cols="40" rows="5" class="pc"></textarea>
-                    <textarea name="description" id="description" cols="30" rows="5" class="sp"></textarea>
+                    <textarea name="description" id="description" cols="40" rows="5"></textarea>
                 </div>
                 <div class="spend-type-box">
                     <input id="type-1" class="radio-inline__input" type="radio" name="type" value="食費" />
