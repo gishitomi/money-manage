@@ -14,7 +14,7 @@ class Kakeibo extends Model
         '光熱費' => ['icon' => '<i class="far fa-lightbulb fa-lg"></i>'],
         '家賃' => ['icon' => ' <i class="fas fa-home fa-lg"></i>'],
         '交通費' => ['icon' => '<i class="fas fa-car fa-lg"></i>'],
-        '通信費' => ['icon' => '<i class="fas fa-wifi fa-lg"></i>'],
+        '生活費' => ['icon' => '<i class="fas fa-hands fa-lg"></i>'],
         '趣味' => ['icon' => '<i class="fas fa-star fa-lg"></i>'],
         '貯蓄' => ['icon' => '<i class="fas fa-yen-sign fa-lg"></i>'],
         '被服費' => ['icon' => '<i class="fas fa-tshirt fa-lg"></i>'],

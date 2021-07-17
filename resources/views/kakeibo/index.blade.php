@@ -115,8 +115,8 @@
                     </label>
                     <input id="type-5" class="radio-inline__input" type="radio" name="type" value="通信費" />
                     <label class="radio-inline__label" for="type-5">
-                        <i class="fas fa-wifi fa-lg"></i><br>
-                        通信費
+                        <i class="fas fa-hands fa-lg"></i><br>
+                        生活費
                     </label>
                     <input id="type-6" class="radio-inline__input" type="radio" name="type" value="交際費" />
                     <label class="radio-inline__label" for="type-6">
