@@ -27,6 +27,7 @@ Route::post('/kakeibo/{date}', 'App\Http\Controllers\KakeiboController@create');
 
 // 一覧画面
 Route::get('/kakeibo/details/{date}', 'App\Http\Controllers\KakeiboController@showDetails')->name('kakeibo.details');
+Route::post('/kakeibo/details/{date}', 'App\Http\Controllers\KakeiboController@detailsEdit');
 
 // 予算編集、設定画面
 Route::get('/budgets/edit/{date?}', 'App\Http\Controllers\BudgetController@showEditForm')->name('budgets.edit');

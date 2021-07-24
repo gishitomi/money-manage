@@ -1,10 +1,12 @@
+/* .date-title */
+
 .date-title {
     font-size: 25px;
     font-weight: 800;
     border-bottom: 2px solid whitesmoke;
     display: flex;
     justify-content: center;
-    margin: 30px;
+    margin: 20px 30px;
 }
 
 .date-title a:hover {
@@ -20,8 +22,32 @@
     color: gray;
 }
 
+
+/* select-edit-bar */
+
+.select-edit-bar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.before-select-edit-bar-left {
+    display: none;
+}
+
+.after-select-edit-bar-left {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+
+/* kakeibo-table */
+
 .kakeibo-table {
     width: 50%;
+    margin: 0 10px;
 }
 
 .table-row {
@@ -36,6 +62,7 @@
 
 .table-left {
     display: flex;
+    align-items: center;
 }
 
 .table-left-text {
@@ -53,8 +80,12 @@
 }
 
 .table-icon {
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
+}
+
+.table-icon i {
+    font-size: 20px;
 }
 
 .border {

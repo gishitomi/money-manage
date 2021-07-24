@@ -19,12 +19,29 @@
             <span class="month-txt">翌月</span>
         </a>
     </div>
+    <div class="select-edit-bar">
+        <div class="before-select-edit-bar-left active">
+            <input type="checkbox" id="select-all">
+            <label for="select-all">全選択</label>
+        </div>
+        <div class="after-select-edit-bar-left">
+            
+            <button class="btn btn-large btn-danger">削除</button>
+
+        </div>
+        <div class="select-edit-bar-right">
+            <p>支出額: ◯件 | 収入額: ◯件 | 合計: ◯件</p>
+        </div>
+    </div>
     <div class="money-table">
         <div class="kakeibo-table">
             <table>
                 <h5>支出額</h5>
                 @foreach($spendDetails as $detail)
                 <tr class="table-row">
+                    <td class="select-check-box">
+                        <input type="checkbox">
+                    </td>
                     <td class="table-left">
                         <div class="table-icon">
                             {!! $detail->type_icon !!}
@@ -53,6 +70,9 @@
                 <h5>収入額</h5>
                 @foreach($incomDetails as $detail)
                 <tr class="table-row">
+                    <td class="select-check-box">
+                        <input type="checkbox">
+                    </td>
                     <td class="table-left">
                         <div class="table-icon">
                             {!! $detail->type_icon !!}
@@ -76,9 +96,9 @@
             <p>{{date('Y年m月', strtotime($date))}}の収入金額はありません。</p>
             @endif
         </div>
-</dic>
-@endsection
+        </dic>
+        @endsection
 
-@section('script')
-<script src="{{asset('js/sp-drawer.js')}}"></script>
-@endsection
+        @section('script')
+        <script src="{{asset('js/sp-drawer.js')}}"></script>
+        @endsection
