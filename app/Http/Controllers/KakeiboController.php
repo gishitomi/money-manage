@@ -108,6 +108,19 @@ class KakeiboController extends Controller
         // 収入金額のみ表示
         $incomDetails = $totalIncomDate->orderBy('date', 'ASC')->get();
 
+        // 支出金額の件数を取得
+        $spendCount = $dateDetails->where('money_type', 1)->count();
+
+        // 収入金額の件数を取得
+        $incomCount = $totalIncomDate->count();
+
+        // 支出金額、収入金額全ての件数を取得
+        $allCount = $spendCount + $incomCount;
+
+        // id
+        $kakeiboId = Auth::user()->kakeibos();
+        // var_dump($kakeiboId);
+
         return view('kakeibo.details', [
             'budgets' => $budgets,
             'budget' => $budget,
@@ -120,7 +133,22 @@ class KakeiboController extends Controller
             'userName' => $userName,
             'spendDetails' => $spendDetails,
             'incomDetails' => $incomDetails,
+            'spendCount' => $spendCount,
+            'incomCount' => $incomCount,
+            'allCount' => $allCount,
         ]);
+    }
+
+    public function detailsEdit(string $date, Request $request)
+    {
+        $kakeibos = Auth::user()->kakeibos();
+        $detailData = $request->post();
+        $deletesData = $detailData['delete_id'];
+        // foreach($deletesData as $deleteData) {
+        //     $kakeibo
+        // }
+
+        return redirect(route('kakeibo.details', ['date' => $date]));
     }
 
     public function showStatisticsForm(string $date)

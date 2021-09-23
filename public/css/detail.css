@@ -28,6 +28,7 @@
 .select-edit-bar {
     display: flex;
     justify-content: space-between;
+    position: relative;
 }
 
 .before-select-edit-bar-left {
@@ -36,10 +37,27 @@
 
 .after-select-edit-bar-left {
     display: none;
+    position: absolute;
+    left: 20%;
+    bottom: 3px;
 }
 
 .active {
     display: block;
+}
+
+
+/* delete-btn */
+
+.delete-kakeibo {
+    width: 150px;
+}
+
+
+/* kakeibo-id */
+
+.kakeibo-id {
+    display: none;
 }
 
 

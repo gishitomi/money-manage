@@ -21,16 +21,18 @@
     </div>
     <div class="select-edit-bar">
         <div class="before-select-edit-bar-left active">
-            <input type="checkbox" id="select-all">
+            <input type="checkbox" id="all-select">
             <label for="select-all">全選択</label>
         </div>
-        <div class="after-select-edit-bar-left">
-            
-            <button class="btn btn-large btn-danger">削除</button>
-
+        <div class="after-select-edit-bar-left" id="delete-btn">
+            <div class="delete-kakeibo">
+                <button class="btn btn-danger btn-block" data-bs-toggle="modal" data-bs-target="#deleteModal" type="button" id="delete-button">
+                    削除する
+                </button>
+            </div>
         </div>
         <div class="select-edit-bar-right">
-            <p>支出額: ◯件 | 収入額: ◯件 | 合計: ◯件</p>
+            <p>支出額: {{ $spendCount }}件 | 収入額: {{ $incomCount }}件 | 合計: {{ $allCount }}件</p>
         </div>
     </div>
     <div class="money-table">
@@ -39,8 +41,9 @@
                 <h5>支出額</h5>
                 @foreach($spendDetails as $detail)
                 <tr class="table-row">
+                    <input type="hidden" class="kakeibo-id" value="{{ $detail->id }}">
                     <td class="select-check-box">
-                        <input type="checkbox">
+                        <input type="checkbox" class="checks">
                     </td>
                     <td class="table-left">
                         <div class="table-icon">
@@ -70,8 +73,11 @@
                 <h5>収入額</h5>
                 @foreach($incomDetails as $detail)
                 <tr class="table-row">
+                    <td class="kakeibo-id">
+                        {{$detail->id}}
+                    </td>
                     <td class="select-check-box">
-                        <input type="checkbox">
+                        <input type="checkbox" class="checks">
                     </td>
                     <td class="table-left">
                         <div class="table-icon">
@@ -96,9 +102,32 @@
             <p>{{date('Y年m月', strtotime($date))}}の収入金額はありません。</p>
             @endif
         </div>
-        </dic>
-        @endsection
+    </div>
+    <!-- 削除モーダル -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Caution</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    選択した項目を削除します。<br>よろしいですか？
+                </div>
+                <div class="modal-footer">
+                    <form action="{{ route('kakeibo.details', ['date' => $date]) }}" method="post" id="form">
+                        @csrf
+                        <div id="select-delete-list"></div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="confirm-delete">OK</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    @endsection
 
-        @section('script')
-        <script src="{{asset('js/sp-drawer.js')}}"></script>
-        @endsection
+    @section('script')
+    <script src="{{asset('js/sp-drawer.js')}}"></script>
+    <script src="{{asset('js/check.js')}}"></script>
+    @endsection
