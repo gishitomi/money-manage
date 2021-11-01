@@ -143,11 +143,11 @@ class KakeiboController extends Controller
     {
         $kakeibos = Auth::user()->kakeibos();
         $detailData = $request->post();
-        $deletesData = $detailData['delete_id'];
-        // foreach($deletesData as $deleteData) {
-        //     $kakeibo
-        // }
+        $deleteDataId = $detailData['delete_id'];
 
+        foreach($deleteDataId as $deleteItemId) {
+            $kakeibos->delete($deleteItemId);
+        }
         return redirect(route('kakeibo.details', ['date' => $date]));
     }
 

@@ -22,7 +22,7 @@
     <div class="select-edit-bar">
         <div class="before-select-edit-bar-left active">
             <input type="checkbox" id="all-select">
-            <label for="select-all">全選択</label>
+            <label for="all-select">全選択</label>
         </div>
         <div class="after-select-edit-bar-left" id="delete-btn">
             <div class="delete-kakeibo">
@@ -125,9 +125,10 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
 
-    @section('script')
-    <script src="{{asset('js/sp-drawer.js')}}"></script>
-    <script src="{{asset('js/check.js')}}"></script>
-    @endsection
+@section('script')
+<script src="{{asset('js/sp-drawer.js')}}"></script>
+<script src="{{asset('js/check.js')}}"></script>
+@endsection
