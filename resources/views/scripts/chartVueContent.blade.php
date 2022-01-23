@@ -49,6 +49,7 @@
                             labels: typeNames,
                         },
                         options: {
+                            maintainAspectRatio: false,
                             title: {
                                 display: true,
                             },
@@ -62,7 +63,6 @@
                                         const amountText = amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
                                         const company = data.labels[index];
                                         return ' ' + company + ' ' + amountText + ' 円';
-
                                     }
                                 }
                             },
