@@ -20,7 +20,9 @@
 
     <div class="graph" id="app">
         <h3>支出額の推移</h3>
-        <canvas id="mycanvas"></canvas>
+        <div class="canvas-wrapper">
+            <canvas id="mycanvas"></canvas>
+        </div>
     </div>
 </div>
 

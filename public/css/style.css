@@ -245,3 +245,24 @@ p {
         width: 100%;
     }
 }
+
+@media screen and (max-width:350px) {
+    .navbar {
+        padding: 7px 0;
+    }
+    .navbar h1 {
+        font-size: 23px;
+    }
+    .menu-btn {
+        top: 5px;
+    }
+    .header-right {
+        font-size: 13px;
+    }
+    .date-arrow {
+        width: 100%;
+    }
+    .home {
+        height: 90vh;
+    }
+}
