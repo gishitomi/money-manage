@@ -18,9 +18,9 @@
             <p id="left-month">{{date('m', mktime(0, 0, 0, date('m', strtotime($date)), 0, 0))}}月</p>
         </div>
         @if(isset($budget))
-        <h1 class="home-index">{{date('Y年m月', strtotime($budget->date))}}</h1>
+        <h1 class="home-index js-calendar">{{date('Y年m月', strtotime($budget->date))}}</h1>
         @else
-        <h1 class="home-index">{{date('Y年m月', strtotime($date))}}</h1>
+        <h1 class="home-index js-calendar">{{date('Y年m月', strtotime($date))}}</h1>
         @endif
         <div class="arrow-right">
             <a href="{{route('kakeibo.index', ['date' => $future])}}" id="right-month-btn">
@@ -243,13 +243,18 @@
     </div>
 </div>
 
+<input type="month" id="test-calendar" class="js-calendar">
+<div id="return"></div>
+
 @endsection
 
 @section('script')
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15/lodash.min.js"></script>
+
 <script src="{{asset('js/drawer.js')}}"></script>
 <script src="{{asset('js/sp-drawer.js')}}"></script>
+<script src="{{asset('js/ajax.js')}}"></script>
 @include('scripts/chartVueContent')
 @endsection

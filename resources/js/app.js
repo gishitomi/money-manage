@@ -30,3 +30,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+import flatpickr from "flatpickr";
+import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect/index';

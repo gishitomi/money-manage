@@ -1,6 +1,9 @@
 .home {
     position: relative;
     height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .home-index {

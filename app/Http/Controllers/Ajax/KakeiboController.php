@@ -14,4 +14,10 @@ class KakeiboController extends Controller
     public function index(Request $request) {
         return Auth::user()->kakeibos()->where('date', 'like', $request->date . '%')->orderBy('date', 'ASC')->where('money_type', 1)->get();
     }
+
+    public function changeDate(Request $request) {
+        $results = $request->all();
+
+        return $results;
+    }
 }

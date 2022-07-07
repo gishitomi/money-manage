@@ -37,10 +37,13 @@ Route::post('/budgets/edit/{date?}', 'App\Http\Controllers\BudgetController@edit
 Route::get('/kakeibo/statistics/{date?}', 'App\Http\Controllers\KakeiboController@showStatisticsForm')->name('kakeibo.statistics');
 Route::post('/kakeibo/statistics/{date?}', 'App\Http\Controllers\KakeiboController@statistics');
 
+//Ajax用URL(日付変換用)
+Route::post('/changedate', 'App\Http\Controllers\Ajax\KakeiboController@changeDate');
+
 });
 
 // Chart.jsでデータを渡すためのAjax用URL
-Route::get('ajax/kakeibo', 'App\Http\Controllers\Ajax\KakeiboController@index');
+Route::get('/ajax/kakeibo', 'App\Http\Controllers\Ajax\KakeiboController@index');
 
 
 // ゲストログイン
