@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>家計簿管理アプリ</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('/lib/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/lib/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     @yield('style')
 </head>
@@ -121,11 +121,8 @@
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{asset('js/app.js')}}"></script>
     <!-- Bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <!-- flatpickrスクリプト -->
-    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
-    <!-- 日本語化のための追加スクリプト -->
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/ja.js"></script>
+    <script src="{{ asset('/lib/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('/lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     @yield('script')
 </body>
 

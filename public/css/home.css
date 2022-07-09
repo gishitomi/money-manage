@@ -11,6 +11,11 @@
     margin: 10px 20px;
 }
 
+#change-calendar {
+    border: none;
+    background-color: whitesmoke;
+}
+
 .date-arrow {
     margin: 0 auto;
     width: 80%;
