@@ -186,10 +186,11 @@ class KakeiboController extends Controller
 
         $allTotalIncomDate = Kakeibo::where('money_type', 2);
 
-        $allTotallIncom = $allTotalIncomDate->sum('money');
+        $allTotalIncom = $allTotalIncomDate->sum('money');
         // ログインしてるユーザー名を取得
         $userName = Auth::user()->name;
         $details = Auth::user()->kakeibos();
+
         $dateDetails = $details->whereDate('date', 'like', $date . '%');
 
         // 支出金額のみ表示
@@ -206,7 +207,7 @@ class KakeiboController extends Controller
             'future' => $future,
             'totalSpend' => $totalSpend,
             'totalIncom' => $totalIncom,
-            'allTotalIncom' => $allTotallIncom,
+            'allTotalIncom' => $allTotalIncom,
             'userName' => $userName,
             'spendDetails' => $spendDetails,
             'incomDetails' => $incomDetails,

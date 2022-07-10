@@ -37,6 +37,9 @@ Route::post('/budgets/edit/{date?}', 'App\Http\Controllers\BudgetController@edit
 Route::get('/kakeibo/statistics/{date?}', 'App\Http\Controllers\KakeiboController@showStatisticsForm')->name('kakeibo.statistics');
 Route::post('/kakeibo/statistics/{date?}', 'App\Http\Controllers\KakeiboController@statistics');
 
+//家計簿一覧画面（PC：カレンダー形式、スマホ：一覧形式）
+Route::get('/kakeibo/list/{date?}', 'App\Http\Controllers\CalendarController@index')->name('kakeibo.list');
+
 //Ajax用URL(日付変換用)
 Route::post('/changedate', 'App\Http\Controllers\Ajax\KakeiboController@changeDate');
 

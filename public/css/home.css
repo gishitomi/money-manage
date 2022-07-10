@@ -165,10 +165,14 @@ form {
 .access-box {
     display: flex;
     justify-content: center;
+    align-items: center;
     margin-top: 30px;
     width: 100%;
-    /* position: absolute; */
-    bottom: 0;
+}
+
+.access-box a {
+    height: 40px;
+    margin: 0 10px;
 }
 
 .detail-wrapper {

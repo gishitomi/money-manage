@@ -240,6 +240,9 @@
         <a href="{{route('kakeibo.statistics', ['date' => $date])}}" class="btn-success btn">
             <i class="fas fa-chart-line fa-lg"></i>
         </a>
+        <a href="{{route('kakeibo.list', ['date' => $date])}}" class="btn-success btn">
+        <i class="fa-solid fa-calendar-days"></i>
+        </a>
     </div>
 </div>
 

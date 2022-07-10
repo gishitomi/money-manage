@@ -2,6 +2,7 @@
 header {
     background-color: green;
     color: white;
+    height: 10vh;
 }
 
 .home-index {
@@ -39,7 +40,7 @@ body {
 }
 
 .main-contents {
-    height: 100vh;
+    height: 90vh;
     background-color: whitesmoke;
 }
 
