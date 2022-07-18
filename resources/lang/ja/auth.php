@@ -15,6 +15,6 @@ return [
 
     'failed' => 'メールアドレス、又はパスワードが一致しませんでした。',
     'password' => 'The provided password is incorrect.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'throttle' => '規定回数以上の試行が失敗しました。 :seconds秒後にもう一度やり直してください。',
 
 ];

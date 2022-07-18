@@ -47,6 +47,7 @@ window.onload = function() {
     var day = weekDay[today.getDay()];
 
     spendDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
+    // spendDate.value = year + '-' + month + '-' + date;
 
     incomDate.textContent = year + '年' + month + '月' + date + '日' + '(' + day + ')';
     dbSpendDate.value = year + '-' + month + '-' + date;

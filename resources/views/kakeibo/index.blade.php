@@ -67,6 +67,7 @@
                         <p>前日</p>
                     </div>
                     <p id="spend-date"></p>
+                    <!-- <input id="spend-date" type="date" value=""> -->
                     <div id="spend-date-right">
                         <i class="fas fa-chevron-right fa-2x icon-color pc"></i>
                         <i class="fas fa-chevron-right fa-lg icon-color sp"></i>
